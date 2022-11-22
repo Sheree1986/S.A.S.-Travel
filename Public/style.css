@@ -1,0 +1,126 @@
+/* font-family */
+@import url("https://fonts.googleapis.com/css2?family=Splash&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-height: 100vh;
+  width: 100%;
+}
+
+/* navbar */
+.nav {
+  height: 5vh;
+  /* padding: 1em 0; */
+  text-align: center;
+  background-color: #113719;
+  color: #eaf3ec;
+  font-family: "Splash", cursive;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.page-container {
+  width: 80%;
+  height: calc(100vh - 5vh);
+  margin: 0 auto;
+  background-color: #040e06;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* for cube might need adjustent to 100em? */
+  perspective: 100em;
+  perspective-origin: 77px 30px;
+  position: relative;
+}
+
+/* cube */
+.cube {
+  /* position: relative; */
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin-cube 25s linear infinite;
+  margin-bottom: 20em;
+}
+/* animation spin cube */
+@keyframes spin-cube {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.cube-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20em;
+  height: 20em;
+  background: #113719;
+  transform: rotateX(90deg) translateZ(-12.5em) translateX(-10em);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(0, 255, 0, 0.2),
+              0 0 200px rgba(0, 255, 0, 0.4),
+              0 0 300px rgba(0, 255, 0, 0.6),
+              0 0 400px rgba(0, 255, 0, 0.8),
+              0 0 500px rgba(0, 255, 0, 1);
+}
+
+.top,
+.bottom,
+.left,
+.right,
+.front,
+.back {
+  height: 20em;
+  width: 20em;
+  background: #2b8a3e;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  box-shadow: 0 0 50px 10px #1a1a1a inset;
+}
+
+.front {
+  transform: translateZ(10em);
+  background-image: url(./img/maldive-cube.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.back {
+  transform: translateZ(-10em);
+  background-image: url(./img/africa-cube.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.top {
+  transform: translateY(-10em) rotateX(90deg);
+}
+
+.bottom {
+  transform: translateY(-10em) rotateX(90deg);
+  background-image: url(./img/venice-cube.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.right {
+  transform: translateX(10em) rotateY(90deg);
+  background-image: url(./img/egypt-cube.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.left {
+  transform: translateX(-10em) rotateY(90deg);
+  background-image: url(./img/bran-castle-cube.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

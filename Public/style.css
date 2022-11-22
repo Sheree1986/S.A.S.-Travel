@@ -1,5 +1,6 @@
 /* font-family */
 @import url("https://fonts.googleapis.com/css2?family=Splash&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
 
 * {
   margin: 0;
@@ -11,22 +12,27 @@ body {
   max-height: 100vh;
   width: 100%;
 }
-
+.initials {
+  font-family: "Splash", cursive;
+}
 /* navbar */
 .nav {
   height: 5vh;
-  /* padding: 1em 0; */
+  padding: 0.5em 0;
   text-align: center;
   background-color: #113719;
+}
+
+h1 {
   color: #eaf3ec;
-  font-family: "Splash", cursive;
-  font-size: 1.8rem;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 200;
+  letter-spacing: 1.4px;
 }
 
 .page-container {
-  width: 80%;
+  width: 80vw;
   height: calc(100vh - 5vh);
   margin: 0 auto;
   background-color: #040e06;
@@ -41,6 +47,7 @@ body {
 
 /* cube */
 .cube {
+
   /* position: relative; */
   transform-style: preserve-3d;
   display: flex;
@@ -48,7 +55,10 @@ body {
   justify-content: center;
   animation: spin-cube 25s linear infinite;
   margin-bottom: 20em;
+  /* margin-left: 30%; */
+  
 }
+
 /* animation spin cube */
 @keyframes spin-cube {
   to {
@@ -64,11 +74,9 @@ body {
   background: #113719;
   transform: rotateX(90deg) translateZ(-12.5em) translateX(-10em);
   filter: blur(20px);
-  box-shadow: 0 0 120px rgba(0, 255, 0, 0.2),
-              0 0 200px rgba(0, 255, 0, 0.4),
-              0 0 300px rgba(0, 255, 0, 0.6),
-              0 0 400px rgba(0, 255, 0, 0.8),
-              0 0 500px rgba(0, 255, 0, 1);
+  box-shadow: 0 0 120px rgba(0, 255, 0, 0.2), 0 0 200px rgba(0, 255, 0, 0.4),
+    0 0 300px rgba(0, 255, 0, 0.6), 0 0 400px rgba(0, 255, 0, 0.8),
+    0 0 500px rgba(0, 255, 0, 1);
 }
 
 .top,
@@ -123,4 +131,73 @@ body {
   background-image: url(./img/bran-castle-cube.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* form */
+form {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  border-left: 5px solid  rgba(0, 255, 0, 0.2);
+  border-top: 5px solid  rgba(0, 255, 0, 0.2);
+  height: 20em;
+  width: 40em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10px 15px rgba(0, 255, 0, 0.8);
+}
+
+h2 {
+  backdrop-filter: invert(70%);
+  color:#eaf3ec;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1.4px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #eaf3ec;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #eaf3ec;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #eaf3ec;
+}
+
+label {
+  
+  color:#eaf3ec;
+  font-weight: 400;
+  background: #040e06;
+  opacity: .75;
+  letter-spacing: 1.2px;
+}
+input[type="email"], input[type="password"]{
+  background: #113719;
+  opacity: .7;
+  color: #eaf3ec;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  width: 100%;
+  outline: none;
+  box-shadow: 0 10px 15px rgba(0, 255, 0, 0.4);
+
+}
+
+button[type="submit"] {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2em;
+  padding: 1em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1.2px;
+  border-radius: 10px;
 }

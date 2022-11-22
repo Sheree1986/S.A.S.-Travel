@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="nav">S.A.S Travel - Journal</div>
+    <div class="nav">
+      <h1><span class="initials">S.A.S</span> Travel Journal</h1>
+    </div>
+
     <div class="page-container">
       <div class="cube">
         <div class="top"></div>
@@ -19,6 +22,29 @@
         <div class="back"></div>
         <div class="cube-shadow"></div>
       </div>
+      <!-- form -->
+      <form action="#" method="get">
+        <h2>LOG IN</h2>
+        <!-- <label for="email-adress"></label> -->
+        <input
+          type="email"
+          name="email-adress"
+          id="email-adress"
+          placeholder="Email adress"
+        />
+        <!-- <label for="password">Password</label> -->
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+        />
+        <div class="remember-me">
+          <input type="checkbox" name="remember-me" id="remember-me" />
+          <label for="remember-me">Remember me</label>
+        </div>
+        <button type="submit">Sign in</button>
+      </form>
     </div>
   </body>
 </html>

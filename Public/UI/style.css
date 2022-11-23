@@ -94,14 +94,14 @@ h1 {
 
 .front {
   transform: translateZ(10em);
-  background-image: url(./img/maldive-cube.jpg);
+  background-image: url(../img/maldive-cube.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .back {
   transform: translateZ(-10em);
-  background-image: url(./img/africa-cube.jpg);
+  background-image: url(../img/africa-cube.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -112,21 +112,21 @@ h1 {
 
 .bottom {
   transform: translateY(-10em) rotateX(90deg);
-  background-image: url(./img/venice-cube.jpg);
+  background-image: url(../img/venice-cube.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .right {
   transform: translateX(10em) rotateY(90deg);
-  background-image: url(./img/egypt-cube.jpg);
+  background-image: url(../img/egypt-cube.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .left {
   transform: translateX(-10em) rotateY(90deg);
-  background-image: url(./img/bran-castle-cube.jpg);
+  background-image: url(../img/bran-castle-cube.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }

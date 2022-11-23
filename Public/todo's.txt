@@ -1,0 +1,1 @@
+1. Fix the login / register btns --> when click on one and form popup not to be able to click on the other btn(login/register) and have same effect

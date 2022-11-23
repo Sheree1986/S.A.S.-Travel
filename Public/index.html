@@ -33,11 +33,16 @@
             LOG IN</button>
         </div>
         <div class="register-btn-wrapper">
-          <button class="register" id="show-login">REGISTER</button>
+          <button class="register" id="show-register">
+            <span class="btn--anim1"></span>
+            <span class="btn--anim1"></span>
+            <span class="btn--anim1"></span>
+            <span class="btn--anim1"></span>
+            REGISTER</button>
         </div>
       </div>
-      <!-- form -->
-      <form action="#" method="get" class="popup">
+      <!--=== form login=== -->
+      <form action="#" method="get" class="popup" id="form-login">
         <div class="close-btn"><span class="x-btn">&times;</span></div>
         <h2>LOG IN</h2>
         <!-- <label for="email-adress"></label> -->
@@ -60,6 +65,15 @@
         </div>
         <button type="submit">Sign in</button>
       </form>
+      <!-- ====end form login======= -->
+
+      <!-- =====form register====== -->
+      <form action="#" method="post" id="form-register">
+        <div class="close-btn"><span class="x-btn">&times;</span></div>
+        <h2>REGISTER</h2>
+        <input type="text" name="first_name" id="first_name" placeholder="First name">
+      </form>
+      <!-- ======end form register====== -->
     </div>
 
     <script src="index.js"></script>

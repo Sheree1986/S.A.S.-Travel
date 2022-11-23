@@ -45,7 +45,7 @@ h1 {
   position: relative;
 }
 
-/* cube */
+/* ===========cube============= */
 .cube {
   /* position: relative; */
   transform-style: preserve-3d;
@@ -130,6 +130,7 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover;
 }
+/* ===========end cube==================== */
 
 /* GROUP BTN LOGIN / REGISTER  container*/
 .group-btn {
@@ -143,7 +144,7 @@ h1 {
   position: absolute;
 }
 
-/* btns  */
+/* ======btns login & register==============  */
 .login,
 .register {
   width: 10em;
@@ -158,8 +159,9 @@ h1 {
   background: none;
   outline: none;
   position: relative;
+  cursor: pointer;
 }
-
+/* --------btn login--------------- */
 .login:hover {
   background: #2b8a3e;
   color: #eaf3ec;
@@ -167,6 +169,17 @@ h1 {
     0 0 100px #2b8a3e;
 }
 
+.register {
+  color: #eaf3ec;
+}
+
+.register:hover {
+  background: rgba(0, 255, 0, 0.6);
+  color: #eaf3ec;
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.6), 0 0 25px rgba(0, 255, 0, 0.6), 0 0 50px rgba(0, 255, 0, 0.6),
+    0 0 100px rgba(0, 255, 0, 0.6);
+}
+/* login register anim */
 .btn--anim {
   position: absolute;
   display: block;
@@ -250,8 +263,97 @@ h1 {
     bottom: 100%;
   }
 }
-/* form */
-form {
+/* ----------------------------- */
+/* register anim */
+.btn--anim1 {
+  position: absolute;
+  display: block;
+}
+
+.btn--anim1:nth-child(1) {
+  top: 0;
+  left: -100%;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #eaf3ec);
+  animation: btn-animation1 1s linear infinite;
+}
+
+@keyframes btn-animation1 {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+.btn--anim1:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #eaf3ec);
+  animation: btn-animation2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+
+@keyframes btn-animation2 {
+  0% {
+    top: -100%;
+  }
+  50%,
+  100% {
+    top: 100%;
+  }
+}
+
+.btn--anim1:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #eaf3ec);
+  animation: btn-animation3 1s linear infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes btn-animation3 {
+  0% {
+    right: -100%;
+  }
+  50%,
+  100% {
+    right: 100%;
+  }
+}
+
+.btn--anim1:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #eaf3ec);
+  animation: btn-animation4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+
+@keyframes btn-animation4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,
+  100% {
+    bottom: 100%;
+  }
+}
+/* ---------------- */
+
+/* -----------end btn login----------------- */
+/* ==========end btns login & register========= */
+/*=========== login form========================= */
+#form-login {
   padding: 2em;
   z-index: 1;
   display: flex;
@@ -271,7 +373,7 @@ form {
     transform 200ms ease-in-out 0ms;
 }
 
-form.active {
+#form-login.active {
   top: 50%;
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
@@ -283,7 +385,7 @@ form.active {
   width: 27px;
   height: 27px;
   border-radius: 22em;
-  background: red !important;
+  background: red;
   margin-left: auto;
   margin-right: 0.6em;
   font-size: 1.6rem;
@@ -291,6 +393,8 @@ form.active {
 }
 
 .x-btn {
+  cursor: pointer;
+
   padding-bottom: 0.4em;
   color: #fff;
   margin-left: 0.2em;
@@ -299,7 +403,6 @@ form.active {
 }
 
 h2 {
-  
   color: #eaf3ec;
   text-align: center;
   font-family: "Poppins", sans-serif;
@@ -340,11 +443,11 @@ input[type="password"] {
   outline: none;
   box-shadow: 0 10px 15px rgba(0, 255, 0, 0.4);
 }
-
+/* ========submit btn form login=============== */
 button[type="submit"] {
   width: 50%;
   margin: 0 auto;
-  margin-top: .5em;
+  margin-top: 0.5em;
   /* margin-bottom: 2em; */
   padding: 1em;
   font-size: 1.1rem;
@@ -360,11 +463,81 @@ button[type="submit"] {
   text-transform: uppercase;
 }
 
-
 button[type="submit"]:hover {
-
   background: #113719;
   border: none;
   box-shadow: 0 0 5px #1a1a1a, 0 0 25px #1a1a1a, 0 0 50px #1a1a1a,
     0 0 100px #1a1a1a;
 }
+/* ======end submit btn form login=============== */
+/* ===========end login form====================== */
+
+/* ==========register form================ */
+#form-register {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  border-left: 5px solid rgba(0, 255, 0, 0.2);
+  border-top: 5px solid rgba(0, 255, 0, 0.2);
+  height: 20em;
+  width: 40em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.35);
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 255, 0, 0.8);
+  transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms,
+    transform 200ms ease-in-out 0ms;
+}
+
+#form-register {
+  padding: 2em;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  border-left: 5px solid rgba(0, 255, 0, 0.2);
+  border-top: 5px solid rgba(0, 255, 0, 0.2);
+  height: 20em;
+  width: 40em;
+  position: absolute;
+  top: -150%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.35);
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 255, 0, 0.8);
+  transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms,
+    transform 200ms ease-in-out 0ms;
+}
+
+#form-register.active1 {
+  top: 50%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+}
+.close-btn {
+  color: #eaf3ec;
+  width: 27px;
+  height: 27px;
+  border-radius: 22em;
+  background: red;
+  margin-left: auto;
+  margin-right: 0.6em;
+  font-size: 1.6rem;
+  padding-top: -1em;
+}
+
+.x-btn {
+  cursor: pointer;
+
+  padding-bottom: 0.4em;
+  color: #fff;
+  margin-left: 0.2em;
+  font-weight: 800;
+  cursor: pointer;
+}
+/* ==========end register form=============== */

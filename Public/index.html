@@ -22,8 +22,23 @@
         <div class="back"></div>
         <div class="cube-shadow"></div>
       </div>
+      <!-- login / register btn -->
+      <div class="group-btn">
+        <div class="login-btn-wrapper">
+          <button class="login" id="show-login">
+            <span class="btn--anim"></span>
+            <span class="btn--anim"></span>
+            <span class="btn--anim"></span>
+            <span class="btn--anim"></span>
+            LOG IN</button>
+        </div>
+        <div class="register-btn-wrapper">
+          <button class="register" id="show-login">REGISTER</button>
+        </div>
+      </div>
       <!-- form -->
-      <form action="#" method="get">
+      <form action="#" method="get" class="popup">
+        <div class="close-btn"><span class="x-btn">&times;</span></div>
         <h2>LOG IN</h2>
         <!-- <label for="email-adress"></label> -->
         <input
@@ -46,5 +61,7 @@
         <button type="submit">Sign in</button>
       </form>
     </div>
+
+    <script src="index.js"></script>
   </body>
 </html>

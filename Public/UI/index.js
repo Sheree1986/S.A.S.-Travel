@@ -1,3 +1,5 @@
+
+
 console.log("this js file is linked");
 // show form login
 document.querySelector("#show-login").addEventListener("click", function () {
@@ -39,7 +41,5 @@ document
 //     modifier: 1,
 //     slideShadows: true,
 //   },
-//   pagination: {
-//     el: ".swiper-pagination",
-//   },
+
 // });

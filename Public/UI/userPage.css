@@ -33,8 +33,11 @@ body {
 }
 /* navbar */
 .nav {
-  height: 5vh;
-  padding: 0.5em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3vh;
+  padding: .5em 0;
   text-align: center;
   background-color: #113719;
 }
@@ -67,11 +70,10 @@ h2 {
   background-size: cover;
   width: 300px;
   height: 300px;
-  -webkit-box-reflect: below 1px linear-gradient(transparent,transparent, #0006);
+  -webkit-box-reflect: below 3px linear-gradient(transparent,transparent, #0006);
   
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6),
-              0 0 50px rgba(0, 255, 0, 0.6),
-              0 0 100px rgba(0, 255, 0, 0.6);
+ 
+             
 }
 
 .swiper-slide img {
@@ -84,16 +86,32 @@ h2 {
 /* === end carousel-===== */
 
 a {
-  color: aquamarine;
+  cursor: pointer;
+  z-index: 3;
+  color:#eaf3ec;
  text-align: center;
- margin-top: -10em;
+ margin-top: -7em;
+ font-size: 1.2rem;
+ /* backdrop-filter: blur(20px); */
+ transition: .1s;
+ letter-spacing: 2px;
+ text-decoration: overline;
+ font-family: "Poppins", sans-serif;
+ font-weight: 200;
+}
+
+a:hover {
+  color: #999;
 }
 
 .container-destination {
+  display: flex;
+  justify-content: center;
+margin: 0 auto;
+margin-top: -3.5em;
   width: 50%;
   display: flex;
   align-items: center;
-  gap: 2em;
 }
 h3 {
   color: #eaf3ec;
@@ -102,14 +120,16 @@ h3 {
   font-weight: 200;
   letter-spacing: 2px;
   font-size: 1rem;
-  text-decoration: overline;
   margin-top: 3em;
 }
 
 /* btn */
 .create_post {
-  /* width: 10em; */
-  padding: 0.8em;
+  /* display: flex; */
+  /* align-self: center; */
+  justify-self: center;
+  width: 10em;
+  padding: 1em;
   border-radius: 5px;
   border: none;
   font-weight: 600;
@@ -216,3 +236,7 @@ h3 {
     bottom: 100%;
   }
 }
+
+
+/* carousel - user */
+

@@ -9,6 +9,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
+    <!-- user carousel -->
+
     <link rel="stylesheet" href="userPage.css" />
   </head>
   <body>
@@ -17,43 +19,66 @@
     </div>
 
     <h2>Our recomandations&darr;</h2>
-      <!-- Swiper -->
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="../img/africa-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/bran-castle-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/egypt-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/maldive-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/venice-cube.jpg" />
-          </div>
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../img/africa-cube.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../img/bran-castle-cube.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../img/egypt-cube.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../img/maldive-cube.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../img/venice-cube.jpg" />
         </div>
       </div>
-      <a href="#">See our comunity posts</a>
-      <div class="container-destination">
-         <h3>My destinations&darr;</h3>
+    </div>
+    <a href="#">See our comunity posts &rarr;</a>
+    <h3>My destinations&darr;</h3>
+    <div class="container-destination">
       <div class="login-btn-wrapper">
         <button class="create_post" id="create_post">
           <span class="btn--anim"></span>
           <span class="btn--anim"></span>
           <span class="btn--anim"></span>
           <span class="btn--anim"></span>
-          Add post</button>
+          Add post
+        </button>
       </div>
+    </div>
+    
+      <!-- Swiper user -->
+     <!-- Swiper -->
+    <div class="swiper mySwiper1">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../img/africa-cube.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../img/bran-castle-cube.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../img/egypt-cube.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../img/maldive-cube.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../img/venice-cube.jpg" />
+        </div>
       </div>
-     
+    </div>
     
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <!-- <script type="text/javascript" src="index.js"></script> -->
+    <script type="text/javascript" src="index.js"></script>
+    <!-- admin carousel -->
     <script>
       let swiper = new Swiper(".mySwiper", {
         effect: "coverflow",
@@ -73,6 +98,27 @@
           disableOnInteraction: false,
         },
       });
+
+      let swiper1 = new Swiper(".mySwiper1", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+        loop: true,
+        autoplay: {
+          delay: 500,
+          disableOnInteraction: false,
+        },
+      });
     </script>
+    <!-- user carousel -->
+    
   </body>
 </html>

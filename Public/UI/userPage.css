@@ -16,21 +16,49 @@ body {
 html,
 body {
   position: relative;
-  height: 100%;
+  min-height: 100%;
+
 }
 
 body {
   background: #040e06;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
+.initials {
+  font-family: "Splash", cursive;
+}
+/* navbar */
+.nav {
+  height: 5vh;
+  padding: 0.5em 0;
+  text-align: center;
+  background-color: #113719;
+}
+
+h1 {
+  color: #eaf3ec;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 200;
+  letter-spacing: 1.4px;
+}
+
+h2 {
+  color: #eaf3ec;
+  margin-left: 1em;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  letter-spacing: 2px;
+  font-size: 1rem;
+}
+/* ====carousel====== */
 .swiper {
   width: 100%;
-  padding-top: 50px;
+  padding-top: 10px;
   padding-bottom: 200px;
 }
 
@@ -53,36 +81,138 @@ body {
   
 }
 
-.initials {
-  font-family: "Splash", cursive;
-}
-/* navbar */
-.nav {
-  height: 5vh;
-  padding: 0.5em 0;
-  text-align: center;
-  background-color: #113719;
+/* === end carousel-===== */
+
+a {
+  color: aquamarine;
+ text-align: center;
+ margin-top: -10em;
 }
 
-h1 {
-  color: #eaf3ec;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.6rem;
-  font-weight: 200;
-  letter-spacing: 1.4px;
-}
-
-/* .page-container {
-  width: 100%;
-  height: calc(100vh - 5vh);
-  margin: 0 auto;
-  background-color: #ced4da;
+.container-destination {
+  width: 50%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 2em;
+}
+h3 {
+  color: #eaf3ec;
+  margin-left: 1em;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  text-decoration: overline;
+  margin-top: 3em;
+}
 
-} */
+/* btn */
+.create_post {
+  /* width: 10em; */
+  padding: 0.8em;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: 0.5s;
+  color: #2b8a3e;
+  background: none;
+  outline: none;
+  position: relative;
+  cursor: pointer !important;
+  text-transform: uppercase;
+  z-index: 3;
+}
 
-/* ===carousel-===== */
+.create_post:hover {
+  background: #2b8a3e;
+  color: #eaf3ec;
+  box-shadow: 0 0 5px #2b8a3e, 0 0 25px #2b8a3e, 0 0 50px #2b8a3e,
+    0 0 100px #2b8a3e;
+}
 
+/* create-post anim */
+.btn--anim {
+  position: absolute;
+  display: block;
+}
 
+.btn--anim:nth-child(1) {
+  top: 0;
+  left: -100%;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #2b8a3e);
+  animation: btn-animation1 1s linear infinite;
+}
+
+@keyframes btn-animation1 {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+.btn--anim:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #2b8a3e);
+  animation: btn-animation2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+
+@keyframes btn-animation2 {
+  0% {
+    top: -100%;
+  }
+  50%,
+  100% {
+    top: 100%;
+  }
+}
+
+.btn--anim:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #2b8a3e);
+  animation: btn-animation3 1s linear infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes btn-animation3 {
+  0% {
+    right: -100%;
+  }
+  50%,
+  100% {
+    right: 100%;
+  }
+}
+
+.btn--anim:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #2b8a3e);
+  animation: btn-animation4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+
+@keyframes btn-animation4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,
+  100% {
+    bottom: 100%;
+  }
+}

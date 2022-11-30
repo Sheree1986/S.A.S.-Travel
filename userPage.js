@@ -1,4 +1,5 @@
-
+  
+  
 // =========carousels=======
 // admin
 let swiper = new Swiper(".mySwiper", {
@@ -12,8 +13,7 @@ let swiper = new Swiper(".mySwiper", {
     depth: 200,
     modifier: 1,
     slideShadows: true,
-    preventClicks: false,
-preventClicksPropagation: false,
+ 
 
   },
   loop: true,
@@ -79,9 +79,26 @@ console.log("it's connected333");
 
 
 
-  //  const one = document.querySelector("img");
-  //  one.addEventListener('click', function(event) { 
-  //  document.createElement = "div"
-   
-  //   console.log(event)
-  //  });
+// const img = document.querySelector(" img");
+// img.addEventListener("click", e => {
+//   console.log(e)
+//   console.log('test clicked')
+// });
+
+const myImg = document.querySelector(".swiper-slide")
+
+// listen for click //AddNew -->function
+myImg.addEventListener("click", AddNew)
+// define AddNew function
+function AddNew() {
+    // create new div
+    const newDiv = document.createElement("div")
+    // test in console
+    console.log('add new')
+    //add class to new div created
+    // newDiv.classList.add('img-box')
+    // append new div to body
+    document.body.appendChild(newDiv)
+    // append new div to div container
+    // divContainer.appendChild(newDiv)
+}

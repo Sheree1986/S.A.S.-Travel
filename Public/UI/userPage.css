@@ -362,3 +362,12 @@ input[type="submit"]:hover {
   color: #eaf3ec;
 }
 
+.info-card {
+  color: #2b8a3e;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 1.4em;
+  text-decoration: overline;
+}

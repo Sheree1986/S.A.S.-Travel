@@ -14,81 +14,98 @@
     <link rel="stylesheet" href="userPage.css" />
   </head>
   <body>
-    <div class="nav">
-      <h1><span class="initials">S.A.S</span> Travel Journal</h1>
-    </div>
+   
+      <div class="nav">
+        <h1><span class="initials">S.A.S</span> Travel Journal</h1>
+      </div>
 
-    <h2>Our recomandations&darr;</h2>
-    <!-- Swiper -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="../img/africa-cube.jpg" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../img/bran-castle-cube.jpg" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../img/egypt-cube.jpg" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../img/maldive-cube.jpg" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../img/venice-cube.jpg" />
+      <h2>Our recomandations&darr;</h2>
+      <!-- Swiper -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="../img/africa-cube.jpg" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/bran-castle-cube.jpg" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/egypt-cube.jpg" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/maldive-cube.jpg" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/venice-cube.jpg" />
+          </div>
         </div>
       </div>
-    </div>
-    <a href="#">See our comunity posts &rarr;</a>
-    <h3>My destinations&darr;</h3>
-    <div class="container-destination">
-      <div class="login-btn-wrapper">
-        <button class="create-post" id="create_post">
-          <span class="btn--anim"></span>
-          <span class="btn--anim"></span>
-          <span class="btn--anim"></span>
-          <span class="btn--anim"></span>
-          Add post
-        </button>
+      <a href="#">See our comunity posts &rarr;</a>
+      <h3>My destinations&darr;</h3>
+      <div class="container-destination">
+        <div class="login-btn-wrapper">
+          <button class="create-post" id="create_post">
+            <span class="btn--anim"></span>
+            <span class="btn--anim"></span>
+            <span class="btn--anim"></span>
+            <span class="btn--anim"></span>
+            Add post
+          </button>
+        </div>
       </div>
-    </div>
 
-    <!-- form add post -->
-  
+      <!-- form add post -->
+
       <form action="#" method="post" id="form-create">
         <div class="close-btn"><span class="x-btn">&times;</span></div>
         <h3 class="form-title-user">Create a post</h3>
-        <input type="text" name="location" id="location" placeholder="Location">
-        <textarea name="description" id="description" cols="30" rows="10" placeholder="Please add a description..."></textarea>
-        <input type="file" class="file-upload-input" onchange="readURL(this)" accept="Image/*">
-        <input type="submit" value="submit">
+        <input
+          type="text"
+          name="location"
+          id="location"
+          placeholder="Location"
+        />
+        <textarea
+          name="description"
+          id="description"
+          cols="30"
+          rows="10"
+          placeholder="Please add a description..."
+        ></textarea>
+        <input
+          type="file"
+          class="file-upload-input"
+          onchange="readURL(this)"
+          accept="Image/*"
+        />
+        <input type="submit" value="submit" />
       </form>
-   
+
       <!-- Swiper user -->
-     <!-- Swiper -->
-    <div class="swiper mySwiper1">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="../img/africa-cube.jpg" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../img/bran-castle-cube.jpg" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../img/egypt-cube.jpg" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../img/maldive-cube.jpg" />
-        </div>
-        <div class="swiper-slide">
-          <img src="../img/venice-cube.jpg" />
+      <!-- Swiper -->
+      <div class="swiper mySwiper1">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="../img/africa-cube.jpg" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/bran-castle-cube.jpg" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/egypt-cube.jpg" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/maldive-cube.jpg" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../img/venice-cube.jpg" />
+          </div>
         </div>
       </div>
-    </div>
-    
+   
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    
+
     <!-- admin carousel -->
     <!-- <script>
       let swiper = new Swiper(".mySwiper", {
@@ -134,7 +151,7 @@
 
    
     </script> -->
-    
+
     <script src="../../userPage.js"></script>
   </body>
 </html>

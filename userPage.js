@@ -1,5 +1,6 @@
 
-// carousels
+// =========carousels=======
+// admin
 let swiper = new Swiper(".mySwiper", {
   effect: "coverflow",
   grabCursor: true,
@@ -11,16 +12,19 @@ let swiper = new Swiper(".mySwiper", {
     depth: 200,
     modifier: 1,
     slideShadows: true,
-    
+    preventClicks: false,
+preventClicksPropagation: false,
+
   },
   loop: true,
   autoplay: {
     delay: 1500,
     disableOnInteraction: false,
-    
-  },
-});
 
+  },
+ 
+});
+// user
 let swiper1 = new Swiper(".mySwiper1", {
   effect: "coverflow",
   grabCursor: true,
@@ -40,15 +44,6 @@ let swiper1 = new Swiper(".mySwiper1", {
   
   },
 });
-
-
-
-
-
-
-
-
-
 
 
 // ============form-create user post=======
@@ -78,3 +73,15 @@ console.log("it's connected333");
     .addEventListener("click", function () {
       document.querySelector("#create_post").classList.remove("dissapear");
     });
+
+
+    // ==========show the swiper-slide===========
+
+
+
+  //  const one = document.querySelector("img");
+  //  one.addEventListener('click', function(event) { 
+  //  document.createElement = "div"
+   
+  //   console.log(event)
+  //  });

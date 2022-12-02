@@ -4,58 +4,66 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>S.A.S Journal</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-    />
-    <!-- user carousel -->
-
+    <title>Document</title>
     <link rel="stylesheet" href="userPage.css" />
   </head>
   <body>
-   
+    <header>
       <div class="nav">
-        <h1><span class="initials">S.A.S</span> Travel Journal</h1>
-      </div>
-
-      <h2>Our recomandations&darr;</h2>
-      <!-- Swiper -->
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="../img/africa-cube.jpg" />
-            <span class="info-card">Click me for more info</span>
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/bran-castle-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/egypt-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/maldive-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/venice-cube.jpg" />
+      <h1><span class="initials">S.A.S</span> Travel Journal</h1>
+    </div>
+  </header> 
+    <main>
+      <!-- admin section -->
+      <section class="section-admin">
+        <h2>Our recomandations&darr;</h2>
+        <!-- admin carousel -->
+        <div class="scene">
+          <div class="carousel">
+            <div class="carousel_cell">1</div>
+            <div class="carousel_cell">2</div>
+            <div class="carousel_cell">3</div>
+            <div class="carousel_cell">4</div>
+            <div class="carousel_cell">5</div>
+            <div class="carousel_cell">6</div>
+            <div class="carousel_cell7">7</div>
           </div>
         </div>
-      </div>
-      <a href="#">See our comunity posts &rarr;</a>
-      <h3>My destinations&darr;</h3>
-      <div class="container-destination">
-        <div class="login-btn-wrapper">
-          <button class="create-post" id="create_post">
-            <span class="btn--anim"></span>
-            <span class="btn--anim"></span>
-            <span class="btn--anim"></span>
-            <span class="btn--anim"></span>
-            Add post
-          </button>
+        <div class="bloc_button">
+          <div>
+            <button type="button" class="back">
+             Prev
+            </button>
+          </div>
+          <div>
+            <button type="button" class="next">
+             Next
+            </button>
+          </div>
         </div>
-      </div>
+      </section>
+      <!-- end admnin section -->
+      <!-- =================================== -->
+      <!-- center section btn add post user / link to check community posts -->
+      <section class="section-center">
+        <a href="#">See our comunity posts &rarr;</a>
+        <div class="container-destination">
+          <div class="login-btn-wrapper">
+            <button class="create-post" id="create_post">
+              <span class="btn--anim"></span>
+              <span class="btn--anim"></span>
+              <span class="btn--anim"></span>
+              <span class="btn--anim"></span>
+              Add post
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- end center section -->
+      <!-- ================================== -->
 
-      <!-- form add post -->
+      <!-- section form add post -->
+         <!-- form add post -->
 
       <form action="#" method="post" id="form-create">
         <div class="close-btn"><span class="x-btn">&times;</span></div>
@@ -81,78 +89,74 @@
         />
         <input type="submit" value="submit" />
       </form>
-
-      <!-- Swiper user -->
-      <!-- Swiper -->
-      <div class="swiper mySwiper1">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="../img/africa-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/bran-castle-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/egypt-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/maldive-cube.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="../img/venice-cube.jpg" />
-          </div>
-        </div>
-      </div>
-   
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
-    <!-- admin carousel -->
-    <!-- <script>
-      let swiper = new Swiper(".mySwiper", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        coverflowEffect: {
-          rotate: 20,
-          stretch: 0,
-          depth: 200,
-          modifier: 1,
-          slideShadows: true,
-          
-        },
-        loop: true,
-        autoplay: {
-          delay: 1500,
-          disableOnInteraction: false,
-          
-        },
-      });
-
-      let swiper1 = new Swiper(".mySwiper1", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        coverflowEffect: {
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        },
-        loop: true,
-        autoplay: {
-          delay: 500,
-          disableOnInteraction: false,
+      <!-- end section form add post -->
+      <!-- ================================= -->
+      <!-- user section -->
+      <section class="section-user">
+        <h3>My destinations&darr;</h3>
         
-        },
-      });
+        <!-- user carousel -->
+        <section class="section-carousel2">
+          <div id="carousel" class="carousel">
+            <div id="iten_1" class="hideLeft">
+              <img
+                src="https://i1.sndcdn.com/artworks-000165384395-rhrjdn-t500x500.jpg"
+              />
+            </div>
 
-   
-    </script> -->
+            <div id="item_2" class="prevLeftSecond">
+              <img
+                src="https://i1.sndcdn.com/artworks-000185743981-tuesoj-t500x500.jpg"
+              />
+            </div>
 
-    <script type="module" src="../../userPage.js"></script>
+            <div id="item_3" class="prev">
+              <img
+                src="https://i1.sndcdn.com/artworks-000158708482-k160g1-t500x500.jpg"
+              />
+            </div>
+
+            <div id="item_4" class="selected">
+              <img
+                src="https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg"
+              />
+            </div>
+
+            <div id="item_5" class="next">
+              <img
+                src="https://i1.sndcdn.com/artworks-000028787381-1vad7y-t500x500.jpg"
+              />
+            </div>
+
+            <div id="item_6" class="nextRightSecond">
+              <img
+                src="https://i1.sndcdn.com/artworks-000108468163-dp0b6y-t500x500.jpg"
+              />
+            </div>
+
+            <div id="item_7" class="hideRight">
+              <img
+                src="https://i1.sndcdn.com/artworks-000064920701-xrez5z-t500x500.jpg"
+              />
+            </div>
+
+            <div id="item_8" class="hideRight">
+              <img
+                src="https://lastfm.freetls.fastly.net/i/u/300x300/1f89759fa92b4c8f86cd7efac06f2d90.png"
+              />
+            </div>
+          </div>
+
+          <div class="buttons">
+            <button id="prev">Prev</button>
+            <button id="next">Next</button>
+          </div>
+        </section>
+      </section>
+      <!-- ======end user  section==========-->
+    </main>
+
+    <script src="userPage.js"></script>
   </body>
 </html>
+

@@ -17,7 +17,6 @@ body {
   position: relative;
 }
 
-
 .nav {
   display: flex;
   justify-content: center;
@@ -53,7 +52,6 @@ main {
   /* removes overflow */
   height: calc(body - nav);
   width: 90%;
-  border: 1px solid red;
   margin: 0 auto;
   background: #040e06;
   /* margin-top: 5%; */
@@ -83,7 +81,6 @@ h2 {
   width: 20em;
   height: 10em;
   /* margin-top: 0em; */
-  
 }
 .carousel {
   height: 100%;
@@ -101,10 +98,44 @@ h2 {
   justify-content: center;
   align-items: center;
   font-size: 80px;
-  color: #000000;
-  /* box-shadow: 0 0 10px rgba(0, 255, 0, 0.2), 0 0 30px rgba(0, 255, 0, 0.4),
-  0 0 300px rgba(0, 255, 0, 0.6), 0 0 50px rgba(0, 255, 0, 0.8),
-  0 0 100px rgba(0, 255, 0, 1); */
+ 
+}
+
+figure {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+ 
+}
+
+figcaption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.4rem;
+  font-family: 'Poppins',sans-serif;
+  background: rgba(4, 14, 6, 0.363);
+  color: #eaf3ec;
+  width: 100%;
+text-align: center;
+letter-spacing: 2px;
+font-weight: 200;
+}
+
+
+.carousel_cell img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
+  mix-blend-mode:soft-light;
+}
+
+.carousel_cell img:hover {
+  transform: scale(1.1);
+  background-color: transparent;
 }
 
 .carousel_cell7 {
@@ -114,9 +145,9 @@ h2 {
   width: 20em;
   height: 20em;
   background: #113719;
- /* clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 2% 50%); */
+  /* clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 2% 50%); */
 
-border-radius: 100%;
+  border-radius: 100%;
   transform: rotateX(90deg) translateZ(-12.5em) translateX(-10em);
   filter: blur(20px);
   box-shadow: 0 0 120px rgba(0, 255, 0, 0.2), 0 0 200px rgba(0, 255, 0, 0.4),
@@ -125,33 +156,41 @@ border-radius: 100%;
 }
 
 .carousel_cell:nth-child(1) {
-  background-color: #ff2e2f;
+  background-color: rgba(4, 14, 6, 0.7);
   /* small translateZ--> smaller the space beween cards */
   transform: rotateY(0deg) translateZ(250px);
 }
+.carousel_cell:nth-child(1):hover,
+.carousel_cell:nth-child(2):hover,
+.carousel_cell:nth-child(3):hover,
+.carousel_cell:nth-child(4):hover,
+.carousel_cell:nth-child(5):hover,
+.carousel_cell:nth-child(6):hover {
+  background: transparent;
+}
 
 .carousel_cell:nth-child(2) {
-  background-color: #809ff6;
+  background-color: rgba(4, 14, 6, 0.7);
   transform: rotateY(60deg) translateZ(250px);
 }
 
 .carousel_cell:nth-child(3) {
-  background-color: #8259fb;
+  background-color: rgba(4, 14, 6, 0.7);
   transform: rotateY(120deg) translateZ(250px);
 }
 
 .carousel_cell:nth-child(4) {
-  background-color: #01dfd7;
+  background-color: rgba(4, 14, 6, 0.7);
   transform: rotateY(180deg) translateZ(250px);
 }
 
 .carousel_cell:nth-child(5) {
-  background-color: #fe9a2e;
+  background-color: rgba(4, 14, 6, 0.7);
   transform: rotateY(240deg) translateZ(250px);
 }
 
 .carousel_cell:nth-child(6) {
-  background-color: #a8f4a9;
+  background-color: rgba(4, 14, 6, 0.7);
   transform: rotateY(300deg) translateZ(250px);
 }
 
@@ -163,29 +202,28 @@ border-radius: 100%;
   /* margin-top: -50%; */
   /* margin-left: 50%; */
   /* transform: translate(50%, -50%); */
- position: absolute;
- top: 44%;
- left: 48.5%;
- 
- transform: translate(-44%, -48.5%);
+  position: absolute;
+  top: 44%;
+  left: 48.5%;
+
+  transform: translate(-44%, -48.5%);
   gap: 1em;
   width: 30%;
-  
 }
 
-
-button.back, button.next {
+button.back,
+button.next {
   font-size: 1rem;
   background: none;
   color: #eaf3ec;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   border: 1px solid #eaf3ec;
-  padding: .1em .5em;
-  transition: .3s;
-  
+  padding: 0.1em 0.5em;
+  transition: 0.3s;
 }
 
-button.back:hover, button.next:hover {
+button.back:hover,
+button.next:hover {
   background-color: #eaf3ec;
   color: #040e06;
 }
@@ -220,7 +258,7 @@ a:hover {
   color: #999;
   cursor: pointer;
 }
- 
+
 .container-destination {
   display: flex;
   justify-content: flex-end;
@@ -229,34 +267,34 @@ a:hover {
   align-items: flex-start;
 }
 
-  /* btn add post */
-  .create-post {
-    justify-self: center;
-    width: 10em;
-    padding: 1em;
-    border-radius: 5px;
-    border: none;
-    font-weight: 600;
-    letter-spacing: 2px;
-    overflow: hidden;
-    transition: 0.5s;
-    color: #2b8a3e;
-    background: none;
-    outline: none;
-    position: relative;
-    cursor: pointer !important;
-    text-transform: uppercase;
-    z-index: 38;
-  }
-  
-  .create-post:hover {
-    background: #2b8a3e;
-    color: #eaf3ec;
-    box-shadow: 0 0 5px #2b8a3e, 0 0 25px #2b8a3e, 0 0 50px #2b8a3e,
-      0 0 100px #2b8a3e;
-  }
+/* btn add post */
+.create-post {
+  justify-self: center;
+  width: 10em;
+  padding: 1em;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: 0.5s;
+  color: #2b8a3e;
+  background: none;
+  outline: none;
+  position: relative;
+  cursor: pointer !important;
+  text-transform: uppercase;
+  z-index: 38;
+}
 
-  /* create-post anim */
+.create-post:hover {
+  background: #2b8a3e;
+  color: #eaf3ec;
+  box-shadow: 0 0 5px #2b8a3e, 0 0 25px #2b8a3e, 0 0 50px #2b8a3e,
+    0 0 100px #2b8a3e;
+}
+
+/* create-post anim */
 .btn--anim {
   position: absolute;
   display: block;
@@ -347,7 +385,6 @@ a:hover {
 }
 /* *********end section center********************* */
 
-
 /* *************section user**************** */
 .section-user {
   display: flex;
@@ -367,10 +404,11 @@ h3 {
 /* ========user carousel=========== */
 #carousel {
   position: relative;
-  height: 15em;
-  top: -10%;
+  height: 20em;
+  /* top: -10%; */
   transform: translateY(10%);
   overflow: hidden;
+  padding-bottom: 5px;
 }
 #carousel div {
   position: absolute;
@@ -379,14 +417,17 @@ h3 {
 }
 #carousel div img {
   /* padding-top: 1em; */
-  width: 400px;
+  width: 200px;
   /* height: 18em; */
   transition: width 400ms;
   -webkit-user-drag: none;
-  box-shadow: 8px 11px 45px -2px rgba(0,255,0,0.59);
-  -webkit-box-shadow: 8px 11px 45px -2px rgba(0,255,0,0.59);
-  -moz-box-shadow: 8px 11px 45px -2px rgba(0,255,0,0.59);
+  -webkit-box-reflect: below 5px
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
 }
+
+/* img {
+  -webkit-box-reflect: below 5px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.2));
+} */
 #carousel div.hideLeft {
   left: 0%;
   opacity: 0;
@@ -456,25 +497,25 @@ h3 {
   gap: 1em;
 }
 
-#prev, #next {
+#prev,
+#next {
   font-size: 1rem;
   background: none;
   color: #eaf3ec;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   border: 1px solid #eaf3ec;
-  padding: .1em .5em;
-  transition: .3s;
+  padding: 0.1em 0.5em;
+  transition: 0.3s;
 }
 
-#prev:hover, #next:hover {
+#prev:hover,
+#next:hover {
   background-color: #eaf3ec;
   color: #040e06;
 }
 /* ======== end user carousel=========== */
 /* ************end section user********************** */
 /* ************* end section user**************** */
-
-
 
 /* =========form user add post======== */
 

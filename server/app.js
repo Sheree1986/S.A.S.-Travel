@@ -7,6 +7,7 @@ const path = require('path');
 const cors = require('cors');
 const entriesRouter = require('./routes/entries')
 const usersRouter = require('./routes/users')
+const { auth } = require('express-openid-connect');
 
 
 //Express route for entries & users

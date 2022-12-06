@@ -1,10 +1,10 @@
-const usersRouter = express.Router();
-
 const express = require("express");
 const app = express();
-require("dotenv").config();
+const usersRouter = express.Router();
+require("dotenv").config('.env');
 const jwt = require("jsonwebtoken");
-const { auth } = require('express-openid-connect');
+const entriesRouter = require("./entries")
+
 
 const {
     PORT, 
@@ -23,11 +23,13 @@ const config = {
     baseURL: AUTH0_BASE_URL,
     clientID: AUTH0_CLIENT_ID,
     issuerBaseURL: AUTH0_ISSUER_BASE_URL
+
   };
   
+  
 // This is for the Databases
-const {User} = require("../models/User.js");
-const {sequelize} = require("../db.js");
+const {User, Password, Entry} = require("../models/User");
+const { database } = require("../db");
 
 // Requiring BCrypt and Creating Salt Object for Hashing Passwords. 
 const bcrypt = require("bcrypt");
@@ -37,6 +39,9 @@ const salt = bcrypt.genSaltSync(4);
 // This is important for when we include information in the body of the request or the "req.body". 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+// const { auth } = require('express-openid-connect');
+// app.use(auth(config));
+
 
 
 
@@ -60,8 +65,8 @@ let setUser = async (req, res, next) => {
         next(err);
     }
 }
-// auth router attaches /login, /logout, and /callback routes to the baseURL
-app.use(auth(config));
+// // auth router attaches /login, /logout, and /callback routes to the baseURL
+// app.use(auth(config));
 
 app.get("/", (req, res) => {
     res.send("Success!!!!!!");
@@ -158,8 +163,8 @@ app.post("/users/login", setUser, async (req, res) => {
 //     } 
 //   })
 
-// auth router attaches /login, /logout, and /callback routes to the baseURL
-app.use(auth(config));
+// // auth router attaches /login, /logout, and /callback routes to the baseURL
+// app.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
 app.get('/', (req, res) => {

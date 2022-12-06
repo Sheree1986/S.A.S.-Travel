@@ -1,17 +1,20 @@
-
-const { db } = require("./server/models");
+const { database } = require("./server/models");
 const app = require("./server/app");
 
-const PORT = process.env.PORT;
+
+
+
+
+const PORT = process.env.PORT || 3000;
 
 const init = async () => {
   try {
-    await db.sync();
+    await database.sync();
 
 app.listen(PORT, async () => {
 
     
-    await sequelize.sync({force:true});
+    await database.sync({force:true});
   
 
     console.log(`App listening on http://localhost:${PORT}`);

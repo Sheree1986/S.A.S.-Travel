@@ -18,7 +18,7 @@ const Entry = sequelize.define("entry", {
     },
     content: {
       type: Sequelize.TEXT,
-      allowNull: false
+      // allowNull: false
     },
     location: {
        type: Sequelize.TEXT,
@@ -29,7 +29,8 @@ const Entry = sequelize.define("entry", {
         type: Sequelize.STRING,
         allowNull: false
 
-    }
+    },
+    
   });
   
   Entry.beforeValidate((entry) => {
@@ -82,10 +83,10 @@ const Entry = sequelize.define("entry", {
       isEmail: true,
       allowNull: false
     },  
-    admin: {
-      type: Sequelize.BOOLEAN,
-      allowNull: false
-    },
+    // admin: {
+    //   type: Sequelize.BOOLEAN,
+    //   allowNull: false
+    // },
   
   }, {
       timestamps: false
@@ -113,6 +114,7 @@ module.exports = {
     db: sequelize,
     User,
     Entry,
+    Tag
 }
 
 

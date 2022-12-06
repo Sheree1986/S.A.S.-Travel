@@ -5,14 +5,14 @@ const app = express();
 const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
-const entriesRouter = require('./routes/entries')
-const usersRouter = require('./routes/users')
-const { auth } = require('express-openid-connect');
+// const entriesRouter = require('./routes/entries')
+// const usersRouter = require('./routes/users')
+// const { auth } = require('express-openid-connect');
 
 
-//Express route for entries & users
-app.use("/entries", entriesRouter);
-app.use("/users", usersRouter);
+// //Express route for entries & users
+// app.use("/entries", entriesRouter);
+// app.use("/users", usersRouter);
 
 //Allow CORS requests
 app.use(cors());

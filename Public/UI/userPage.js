@@ -243,6 +243,8 @@ console.log("it's connected333");
       document.querySelector("#create_post").classList.remove("dissapear");
     });
 
+    
+
 // ============end form user create post=====
     
 
@@ -250,19 +252,27 @@ console.log("it's connected333");
 
 
 // ====create div on img click====
-// define variables
-let img = document.querySelectorAll("img");
-let section = document.querySelector("main");
-// loop thru all imgs
-img.forEach((el) => {
-  // addevents listenersto all buttons
-  el.addEventListener("click", () => {
-    // create new div with different img clicked
-    const newDiv = document.createElement("div");
-    console.log("add");
+// -----define variables------
+// targeting all img
+let img = document.querySelectorAll("img")//[img.getAttribute("src")]; --target selected img src ???
+let parent = document.querySelector(".show-content");
+let newDiv = document.createElement("div");
+// loop thru all imgs// create new div with different img clicked
+img.forEach((img) => {
+  // addevents listeners to all imgs/
+  img.addEventListener("mouseover", () => {
+    //add new created div inside parent container
+    parent.appendChild(newDiv);
+   
+    // console.log("add");
     // add class to new div
     newDiv.classList.add("img-box-description");
-    // add new div created to body
-    section.appendChild(newDiv);
+    
   });
+  // return newDiv[i];
 });
+// close div
+parent.addEventListener("mouseout", ()=> {
+  newDiv.classList.remove("img-box-description", "parent")
+})
+// ========end create div on img click===========

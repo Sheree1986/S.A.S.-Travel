@@ -515,7 +515,7 @@ h3 {
 }
 /* ======== end user carousel=========== */
 /* ************end section user********************** */
-/* ************* end section user**************** */
+
 
 /* =========form user add post======== */
 
@@ -615,13 +615,31 @@ input[type="submit"]:hover {
   color: #eaf3ec;
 }
 
-/* .info-card {
-  color: #2b8a3e;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translate(0, -50%);
-  font-size: 1.4em;
-  text-decoration: overline;
-} */
+
 /* ==============end form user add post====== */
+
+
+/* =============user carousel img onclick card info=============== */
+.img-box-description {
+  
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.4em;
+  width: 20em;
+  height: 30em;
+  margin: 0 auto;
+  opacity: 1;
+  z-index: 11;
+  /* display: none; */
+  border-radius: 15px;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  border-top: 3px solid rgba(255, 255, 255, 0.5);
+  border-left: 3px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+
+/* =============end user carousel img onclick card info=============== */

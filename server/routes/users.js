@@ -67,7 +67,7 @@ let setUser = async (req, res, next) => {
 }
 
 
-router .get("/", (req, res) => {
+router .get("/", (req, res, next) => {
     res.send("Success!!!!!!");
 })
 //GET all users
@@ -84,6 +84,7 @@ router.get("/", async (req, res, next) => {
 
 // GET one user
 router.get("/:id", async (req, res, next) => {
+  console.log("testing endpoint")
   try{
     const user = await User.findByPk(req.params.id, {
         include: [{model: Entry}]

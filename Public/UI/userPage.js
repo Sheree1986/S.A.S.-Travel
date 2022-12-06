@@ -257,17 +257,29 @@ console.log("it's connected333");
 let img = document.querySelectorAll("img")//[img.getAttribute("src")]; --target selected img src ???
 let parent = document.querySelector(".show-content");
 let newDiv = document.createElement("div");
+let divImg = document.createElement("div");
+let divContent = document.createElement("div");
+let update = document.createElement("div");
 // loop thru all imgs// create new div with different img clicked
 img.forEach((img) => {
   // addevents listeners to all imgs/
   img.addEventListener("mouseover", () => {
     //add new created div inside parent container
     parent.appendChild(newDiv);
+    //add new div to display img inside newDiv
+    newDiv.appendChild(divImg);
+    //add new div to display text description inside newDiv
+    newDiv.appendChild(divContent);
+    
    
     // console.log("add");
     // add class to new div
     newDiv.classList.add("img-box-description");
-    
+    //add class to divImg
+    divImg.classList.add("div-img")
+     //add class to divContent
+     divContent.classList.add("div-content")
+     
   });
   // return newDiv[i];
 });

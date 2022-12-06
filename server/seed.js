@@ -1,14 +1,9 @@
 
-
-const {users} = require('./UserData.js');
-
+const {users, entries, tags} = require('./seedData.js');
 const {sequelize} = require('./db');
 const { User, Entry } = require('./models');
-// const {users} = require("./UserData");
-// const {passwords} = require("./passwordData");
-// const { database } = require("../db")
 const bcrypt = require("bcrypt");
-;const { User, Password } = require("./models/index");
+;
 
 const SALT_COUNT = 4;
 let salt = bcrypt.genSaltSync(SALT_COUNT);
@@ -20,8 +15,16 @@ let seed = async () => {
         await sequelize.sync({ force: true });
     
         // insert data
-        await Promise.all(items.map(item => Item.create(item)));
+        await Promise.all(users.map(user => User.create(user)));
+        const createdEntries = await Promise.all(entries.map(entry => Entry.create(entry)));
+        const createdTags = await Promise.all(tags.map(tag => Tag.create(tag)));
         
+              // associate data
+        createdEntries[0].addTags([createdTags[1]]);
+        createdEntries[1].addTags([createdTags[0]]);
+        createdEntries[2].addTags([createdTags[1], createdTags[2]]);
+        createdEntries[3].addTags([createdTags[2],createdTags[3]]);
+
 
         console.log("db populated!");
     } catch (error) {

@@ -1,10 +1,7 @@
 const express = require("express");
-const app = express();
-const usersRouter = express.Router();
-require("dotenv").config('.env');
+const router = express.Router();
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const entriesRouter = require("./entries")
-
 
 const {
     PORT, 
@@ -16,20 +13,23 @@ const {
 } = process.env;
 
 const config = {
-    authRequired: false,
+    // authRequired: false,
     auth0Logout: true,
     secret: AUTH0_SECRET,
     token: ACCESS_TOKEN_SECRET,
     baseURL: AUTH0_BASE_URL,
     clientID: AUTH0_CLIENT_ID,
-    issuerBaseURL: AUTH0_ISSUER_BASE_URL
+    issuerBaseURL: AUTH0_ISSUER_BASE_URL,
+    Port: PORT
 
   };
-  
+
+// router.use(auth(config));
+
   
 // This is for the Databases
-const {User, Password, Entry} = require("../models/User");
-const { database } = require("../db");
+const {User, Entry} = require("../seedData")
+const {sequelize} = require("../db");
 
 // Requiring BCrypt and Creating Salt Object for Hashing Passwords. 
 const bcrypt = require("bcrypt");
@@ -37,10 +37,10 @@ const salt = bcrypt.genSaltSync(4);
 
 //Include the Middleware
 // This is important for when we include information in the body of the request or the "req.body". 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+router.use(express.json());
+router.use(express.urlencoded({extended:true}));
 // const { auth } = require('express-openid-connect');
-// app.use(auth(config));
+// route.use(auth(config));
 
 
 
@@ -65,28 +65,41 @@ let setUser = async (req, res, next) => {
         next(err);
     }
 }
-// // auth router attaches /login, /logout, and /callback routes to the baseURL
-// app.use(auth(config));
 
-app.get("/", (req, res) => {
+
+router .get("/", (req, res) => {
     res.send("Success!!!!!!");
 })
 //GET all users
-app.get("/users", async (req, res) => {
+router.get("/", async (req, res, next) => {
+  try {
     let users = await User.findAll();
     res.send(users);
-})
+} catch (error) {
+    next(error);
+  }
+});
 
 
-//GET one user
-entriesRouter.get("/:id", async (req, res) => {
-    const users = await User.findByPk(req.params.id);
-   res.json(users);
-  
-  })
-  
 
-app.post("/users/register", async (req, res) => {
+// GET one user
+router.get("/:id", async (req, res, next) => {
+  try{
+    const user = await User.findByPk(req.params.id, {
+        include: [{model: Entry}]
+    });
+    if(!user) {
+        res.status(404);
+        next();
+      } else {
+        res.send(user);
+      }
+    } catch (error) {
+      next(error);
+    }
+  });
+
+router.post("/register", async (req, res, next) => {
     // The user should be authenticated
 
     // First thing we want to do is get the data passed into the body
@@ -114,7 +127,7 @@ app.post("/users/register", async (req, res) => {
 
 })
 
-app.post("/users/login", setUser, async (req, res) => {
+router.post("/login", setUser, async (req, res) => {
     const {username, password} = req.body;
     const user = await User.findOne({where: {username}});
     const isMatch = bcrypt.compareSync(password, user.password);
@@ -135,45 +148,45 @@ app.post("/users/login", setUser, async (req, res) => {
     }
 })
 // // Update a single user by id
-// usersRouter.put("/:id", async (req, res, next) => {
-//     try {
-//       await User.update(req.body, {
-//         where: { id: req.params.id },
-//       });
-//       let putUsers = await User.findAll();
-//       res.json(putUsers);
-//     } catch (error) {
-//       next(error);
-//     }
-//   });
+router.put("/:id", async (req, res, next) => {
+    try {
+      await User.update(req.body, {
+        where: { id: req.params.id },
+      });
+      let putUsers = await User.findAll();
+      res.json(putUsers);
+    } catch (error) {
+      next(error);
+    }
+  });
   
   
   
   
 //   // Delete a single user by id
-//   usersRouter.delete("/:id", async (req, res, next) => {
-//     try {
-//       await User.destroy({
-//         where : {id : req.params.id}
-//       });
-//       const user = await User.findAll()
-//       res.send(user);
-//     } catch (error) {
-//       next(error);
-//     } 
-//   })
+  router.delete("/:id", async (req, res, next) => {
+    try {
+      await User.destroy({
+        where : {id : req.params.id}
+      });
+      const user = await User.findAll()
+      res.send(user);
+    } catch (error) {
+      next(error);
+    } 
+  })
 
 // // auth router attaches /login, /logout, and /callback routes to the baseURL
-// app.use(auth(config));
+// route.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
-app.get('/', (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-});
+// router.get('/', (req, res) => {
+//   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+// });
 
-// Restrictive or Private Route
-app.get("/users/entry", (req, res) => {
-    let isAuthenticated = req.oidc.isAuthenticated();
-    res.send(isAuthenticated ? "<h1>Welcome to our travel journal, please create your blog entry</h1>" : "<h1>Please make sure to authenticate in order to view our products</h1>")
-});
-module.exports = usersRouter, PORT;
+// // Restrictive or Private Route
+// router.get("/users/entry", (req, res) => {
+//     let isAuthenticated = req.oidc.isAuthenticated();
+//     res.send(isAuthenticated ? "<h1>Welcome to our travel journal, please create your blog entry</h1>" : "<h1>Please make sure to authenticate in order to view our products</h1>")
+// });
+module.exports = router;

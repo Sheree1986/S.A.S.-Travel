@@ -288,3 +288,19 @@ parent.addEventListener("mouseout", ()=> {
   newDiv.classList.remove("img-box-description", "parent")
 })
 // ========end create div on img click===========
+
+
+//********************** */
+//==TESTING ADDING DYNAMICALLY NEW USER IMG ON CAROUSEL
+  //define where to add img from arr
+let imgPush = document.querySelector(".hideRight")
+let btn = document.querySelector("#create_post")
+btn.addEventListener("click", () => {
+
+//define arr
+let testArr = ["../UI/img2"]
+for (let i = 0; i < testArr.length; i++) {
+
+  imgPush.appendChild(testArr[i])
+}
+})

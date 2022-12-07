@@ -412,6 +412,7 @@ h2 {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #eaf3ec;
   opacity: 1; /* Firefox */
+  letter-spacing: 2px;
 }
 
 :-ms-input-placeholder {
@@ -581,3 +582,84 @@ input[type="password"] {
 }
 
 /* ==========end register form=============== */
+
+
+/* ============media query================== */
+
+@media screen and (max-width: 500px) {
+
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+  .nav {
+    width: 100%;
+    
+  }
+
+
+  h1 {
+    font-size: 1rem;
+  }
+  
+  .page-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #040e06;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* for cube might need adjustent to 100em? */
+    /* perspective: 6em;
+    perspective-origin: 77px 30px;
+    position: relative; */
+  }
+.cube {
+  display: none;
+}
+
+#form-login {
+  height: 30em;
+  width: 22em;
+  position: absolute;
+  top: -100%;
+  left: 50%;
+}
+.close-btn {
+  color: #eaf3ec;
+  width: 27px;
+  height: 27px;
+  border-radius: 22em;
+  background: red;
+  /* margin-left: auto; */
+  margin-right: -0.4em;
+  font-size: 1.6rem;
+  padding-top: -1em;
+}
+h2 {
+  font-size: 1rem;
+  font-weight: 300;
+}
+input {
+  margin-top: 2em;
+}
+button[type="submit"] {
+  margin-top: 3em;
+  padding: .4em;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+#form-register {
+  height: 36em;
+  width: 22em;
+}
+input[type="text"], input[type="email"],
+input[type="password"] {
+  margin-bottom: 0;
+}
+}
+

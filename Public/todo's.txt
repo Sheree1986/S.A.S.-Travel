@@ -1,1 +1,6 @@
 1. Fix the login / register btns --> when click on one and form popup not to be able to click on the other btn(login/register) and have same effect
+
+/IMPORTANT!!!!!!/
+2. Fix the popup on user page --> when mouseover a img popup shows(suppose to display info of the img hovered - img, description / should work only for user carousel and not also for admin carousel ** for admin carousel should just display the info card with ust img and description and no posibillity to use CRUD on the specific post as you should be able to do so on user carousel)
+
+3. Design the community page for displaying all the card posts added automatically by the users(maybe add a search bar at top of the page for searching for a specific post --by location / see all posts from all users regading that location /// by user - see all posts from a specific user)

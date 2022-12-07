@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+// const { seed, salt} = require("./seed/seed");
 
 const {
     PORT, 
@@ -28,7 +29,7 @@ const config = {
 
   
 // This is for the Databases
-const {User, Entry} = require("../seedData")
+const {User, Entry} = require("../models/index")
 const {sequelize} = require("../db");
 
 // Requiring BCrypt and Creating Salt Object for Hashing Passwords. 
@@ -190,4 +191,5 @@ router.put("/:id", async (req, res, next) => {
 //     let isAuthenticated = req.oidc.isAuthenticated();
 //     res.send(isAuthenticated ? "<h1>Welcome to our travel journal, please create your blog entry</h1>" : "<h1>Please make sure to authenticate in order to view our products</h1>")
 // });
+// seed();
 module.exports = router;

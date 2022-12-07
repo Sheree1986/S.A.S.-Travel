@@ -28,8 +28,11 @@ const Entry = sequelize.define("entry", {
 
         type: Sequelize.STRING,
         allowNull: false
+      },  
 
-    },
+    }, {
+      timestamps: false
+  
     
   });
   

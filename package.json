@@ -1,7 +1,6 @@
 {
   "name": "s.a.s-travel",
   "version": "1.0.0",
-
   "scripts": {
     "test": "jest",
     "client-dev": "parcel public/index.html --open",

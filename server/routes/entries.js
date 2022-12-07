@@ -3,8 +3,7 @@ const router = express.Router();
 const { Entry, User, Tag } = require("../models");
 
 
-// router.use(express.json());
-// router.use(express.urlencoded({extended: true}))
+
 
 // GET all Entries
 router.get("/", async (req, res, next) => {
@@ -23,7 +22,7 @@ router.get("/:id", async (req, res) => {
 
 })
 
-// Create a single entry to the inventory by id
+// Create a single entry to the journal by id
 router.post("/", async (req, res, next) => {
   try {
 //     const entry = await Entry.create(req.body);
@@ -58,7 +57,7 @@ if(req.body.tags) {
       tags.push(tag);
     }
   }
-  await page.addTags(tags);
+  await entry.addTags(tags);
 }
 
 res.send(page);
@@ -78,19 +77,6 @@ router.get("/search", async (req, res, next) => {
 });
 
 
-
-// Update a single entry to the inventory by id
-// router.put("/:id", async (req, res, next) => {
-//   try {
-//     await Entry.update(req.body, {
-//       where: { id: req.params.id },
-//     });
-//     let putEntries = await Entry.findAll();
-//     res.json(putEntries);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
 
 // PUT /wiki/:slug
 router.put("/:slug", async (req, res, next) => {
@@ -119,21 +105,6 @@ router.put("/:slug", async (req, res, next) => {
     next(error);
   }
 });
-
-
-
-// Delete a single entry to the inventory by id
-// router.delete("/:id", async (req, res, next) => {
-//   try {
-//     await Entry.destroy({
-//       where : {id : req.params.id}
-//     });
-//     const entry = await Entry.findAll()
-//     res.send(entry);
-//   } catch (error) {
-//     next(error);
-//   } 
-// })
 
 // DELETE /entry/:slug
 router.delete("/:slug", async (req, res, next) => {

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S.A.S Journal</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="nav">
+      <h1><span class="initials">S.A.S</span> Travel Journal</h1>
+    </div>
+
+    <div class="page-container">
+      <div class="cube">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="cube-shadow"></div>
+      </div>
+      <!-- login / register btn -->
+      <div class="group-btn">
+        <div class="login-btn-wrapper">
+          <button class="login" id="show-login">
+            <span class="btn--anim"></span>
+            <span class="btn--anim"></span>
+            <span class="btn--anim"></span>
+            <span class="btn--anim"></span>
+            LOG IN</button>
+        </div>
+        <div class="register-btn-wrapper">
+          <button class="register" id="show-register">
+            <span class="btn--anim1"></span>
+            <span class="btn--anim1"></span>
+            <span class="btn--anim1"></span>
+            <span class="btn--anim1"></span>
+            REGISTER</button>
+        </div>
+      </div>
+      <!--=== form login=== -->
+      <form action="#" method="get" class="popup" id="form-login">
+        <div class="close-btn"><span class="x-btn">&times;</span></div>
+        <h2>LOG IN</h2>
+        <!-- <label for="email-adress"></label> -->
+        <input
+          type="email"
+          name="email-adress"
+          id="email-adress"
+          placeholder="Email adress"
+        />
+        <!-- <label for="password">Password</label> -->
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+        />
+        <div class="remember-me">
+          <input type="checkbox" name="remember-me" id="remember-me" />
+          <label for="remember-me">Remember me</label>
+        </div>
+        <button type="submit">Sign in</button>
+      </form>
+      <!-- ====end form login======= -->
+
+      <!-- =====form register====== -->
+      <form action="#" method="post" id="form-register">
+        <div class="close-btn"><span class="x-btn">&times;</span></div>
+        <h2>REGISTER</h2>
+        <input type="text" name="first_name" id="first_name" placeholder="First name">
+        <input type="text" name="last_name" id="last_name" placeholder="Last name">
+        <input type="email" name="email" id="email" placeholder="Email">
+        <input type="password" name="password" id="password" placeholder="Password">
+        <input type="password" name="password" id="password" placeholder="Re-type your password">
+        <button type="submit">REGISTER</button>
+      </form>
+      <!-- ======end form register====== -->
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

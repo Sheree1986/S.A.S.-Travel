@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { Entry, User, Tag } = require("../models");
+const { Entry } = require("../models/index");
 
 
+
+router.use(express.json());
+router.use(express.urlencoded({extended: true}))
 
 
 // GET all Entries
@@ -17,54 +20,61 @@ router.get("/", async (req, res, next) => {
 
 //GET one entry
 router.get("/:id", async (req, res) => {
-  const entries = await Entry.findByPk(req.params.id);
- res.json(entries);
+  try {
+     const entries = await Entry.findByPk(req.params.id);
+ res.send(entries);
+} catch (error) {
+  next(error);
+}
+});
 
-})
+router.put("/:id", async (req, res) => {
+  try {
+    const entries = await Entry.findByPk(req.params.id);
+  await entries.update({
+    title: req.body.title,
+    content: req.body.content,
+    location: req.body.location,
+    image: req.body.image
+  })
+
+  res.send(entries);
+} catch (error) {
+  next(error);
+}
+});
 
 // Create a single entry to the journal by id
 router.post("/", async (req, res, next) => {
   try {
-//     const entry = await Entry.create(req.body);
-//     res.send(entry);
-//   } catch (error) {
-//     next(error);
-//   }
-// })
-const [user, wasCreated] = await User.findOrCreate({
-  where: {
-    username: req.body.username,
-    name: req.body.name,
-    password: req.body.password,
-    email: req.body.email
-  }
-});
+const entries = await Entry.create({
+  title: req.body.title,
+  content: req.body.content,
+  location: req.body.location,
+  image: req.body.image
+})
 
-const entry = await Entry.create(req.body);
-
-await entry.setAuthor(user);
-
-if(req.body.tags) {
-  const tagArray = req.body.tags.split(' ');
-  const tags = [];
-  for (let tagName of tagArray) {
-    const [tag, wasCreated] = await Tag.findOrCreate({
-      where: {
-        name: tagName
-      }
-    });
-    if (wasCreated) {
-      tags.push(tag);
-    }
-  }
-  await entry.addTags(tags);
-}
-
-res.send(page);
+res.send(entries);
 } catch (error) {
 next(error);
 }
 });
+
+//Delete one entry
+router.delete("/:id", async (req, res) => {
+  try {
+     const entries = await Entry.findByPk(req.params.id);
+     const deleteEntry =await entries.destroy();
+ res.send(deleteEntry);
+} catch (error) {
+  next(error);
+}
+});
+// const entry = await Entry.create(req.body);
+
+// await entry.setAuthor(user);
+
+
 
 // GET /entry/search
 router.get("/search", async (req, res, next) => {
@@ -77,95 +87,6 @@ router.get("/search", async (req, res, next) => {
 });
 
 
-
-// PUT /wiki/:slug
-router.put("/:slug", async (req, res, next) => {
-  try {
-    const [updatedRowCount, updatedEntries] = await Entry.update(req.body, {
-      where: {
-        slug: req.params.slug
-      },
-      returning: true
-    });
-
-    const tagArray = req.body.tags.split(' ');
-    const tags = await Promise.all(tagArray.map(async (tagName) => {
-      const [tag, wasCreated] = await Tag.findOrCreate({
-        where: {
-          name: tagName
-        }
-      });
-      return tag;
-    }));
-
-    await updatedEntries[0].setTags(tags);
-
-    res.send(updatedEntries[0]);
-  } catch (error) {
-    next(error);
-  }
-});
-
-// DELETE /entry/:slug
-router.delete("/:slug", async (req, res, next) => {
-  try {
-    await Entry.destroy({
-      where: {
-        slug: req.params.slug
-      }
-    });
-
-    const entries = await Entry.findAll();
-    res.send(entries);
-  } catch (error) {
-    next(error);
-  }
-});
-
-// GET /entry/:slug
-router.get("/:slug", async (req, res, next) => {
-  try {
-    const entry = await Entry.findOne({
-      where: {
-        slug: req.params.slug
-      },
-      include: [
-        {
-          model: Tag,
-          through: { attributes: [] } // exclude join table data
-        },
-        {
-          model: User,
-          as: 'author'
-        }
-      ],
-    });
-    if (entry === null) {
-      res.status(404).send(notFoundPage());
-    } else {
-      res.send(entry);
-    }
-  } catch (error) {
-    next(error);
-  }
-});
-
-// GET /entry/:slug/similar
-router.get('/:slug/similar', async (req, res, next) => {
-  try {
-    const entry = await Entry.findOne({
-      where: {
-        slug: req.params.slug
-      },
-      include: [{ model: Tag }]
-    });
-    const tagNames = entry.tags.map(tag => tag.name);
-    const similars = await entry.findSimilar(tagNames);
-    res.send(similars);
-  } catch (error) {
-    next(error);
-  }
-})
 
 
 module.exports = router;

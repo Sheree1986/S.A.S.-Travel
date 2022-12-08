@@ -46,16 +46,5 @@ users: [
       email: "Sharee.Poquette@verizon.com",
     },
 ],
-tags: [
-  {
-    name: 'One of the Seven Wonders of the World',
-  },
-  {
-    name: 'Pirate"s Bay',
-  },
-  {
-    name: 'Rio',
-  },
- 
-]
+
 }

@@ -1,7 +1,8 @@
 
-const {users, entries, tags} = require('./seedData.js');
+
+const {users, entries}  = require('./seedData.js');
 const {sequelize} = require('./db');
-const { User, Entry, Tag } = require('./models');
+const { User, Entry } = require('./models');
 const bcrypt = require("bcrypt");
 ;
 
@@ -20,18 +21,30 @@ let seed = async () => {
             console.log(users[i].password);
         }
         
-        // insert data
-        await Promise.all(users.map(user => User.create(user)));
-        const createdEntries = await Promise.all(entries.map(entry => Entry.create(entry)));
-        const createdTags = await Promise.all(tags.map(tag => Tag.create(tag)));
+        // // insert data
+             // insert data
+             await Promise.all(users.map(user => User.create(user)));
+             const createdEntries = await Promise.all(entries.map(entry => Entry.create(entry)));
+             console.log(createdEntries)
+        // let entryEntries = await Entry.bulkCreate(entries);
+        // let userEntries = await User.bulkCreate(users);
+
+        // let firstEntry = await entryEntries[0];
+        // let secondUser = await userEntries[0];
+
+
+        // console.log("Test 2: ", firstEntry);
+        // console.log("Test 2: ", secondUser);
+        // await Promise.all(users.map(user => User.create(user)));
+        // const createdEntries = await Promise.all(
+        // const createdTags = await Promise.all(tags.map(tag => Tag.create(tag)));
         
-              // associate data
-        createdEntries[0].addTags([createdTags[1]]);
-        createdEntries[1].addTags([createdTags[0]]);
-        createdEntries[2].addTags([createdTags[1], createdTags[2]]);
+        //       // associate data
+        // createdEntries[0].addTags([createdTags[1]]);
+        // createdEntries[1].addTags([createdTags[0]]);
+        // createdEntries[2].addTags([createdTags[1], createdTags[2]]);
       
-        console.log("Beginning the process... \n\n");
-        console.log("The users ", users);
+      
 
 
         console.log("db populated!");

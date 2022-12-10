@@ -10,7 +10,7 @@ const init = async () => {
     await db.sync();
 
     app.listen(PORT, () => {
-      console.log(`Server listening at http://localhost:${PORT}`);
+      console.log(`Server listening on http://localhost:${PORT}`);
     });
   } catch (error) {
     console.error('Error starting server:', error)

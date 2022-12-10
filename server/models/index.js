@@ -48,6 +48,11 @@ const Entry = sequelize.define("entry", {
       allowNull: false
  
     },
+    name: {
+      type: Sequelize.STRING,
+      allowNull: false
+ 
+    },
     password: {
       type: Sequelize.STRING,
       allowNull: false

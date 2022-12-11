@@ -29,14 +29,16 @@ users: [
       username: "ShereeGTO",
       name: "Sheree Edmund",
       password: "ihatevpn",
-      email: "sheree.edmund@verizon.com"
+      email: "sheree.edmund@horizon.com",
+      admin: true
     },
     {
       
       username: "AdrianFE",
       name: "Adrian Baltag",
       password: "notcomingintotheoffice",
-      email: "adrian.baltag@verizon.com"
+      email: "adrian.baltag@horizon.com",
+      admin: true
     },
     {
      
@@ -44,7 +46,22 @@ users: [
       name: "Sharee Poquette",
       password: "CyberSec",
       email: "Sharee.Poquette@verizon.com",
+      admin: true
     },
+    {
+    username: "ElvisisLuffy",
+    name: "Elvis Luffy",
+    password: "totallynotthundercats",
+    email: "elvis@gmail.com",
+    admin: false
+  },
+  {
+    username: "Laurie",
+    name: "Laurie Multiverse",
+    password: "thundercats",
+    email: "laurie@gmail.com",
+    admin: false
+  },
 ],
 
 }

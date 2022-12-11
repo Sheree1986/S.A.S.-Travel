@@ -31,7 +31,8 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const entries = await Entry.findByPk(req.params.id);
-  await entries.update({
+    await entries.update({
+    authorId: req.body.authorId,
     title: req.body.title,
     content: req.body.content,
     location: req.body.location,
@@ -48,6 +49,7 @@ router.put("/:id", async (req, res) => {
 router.post("/", async (req, res, next) => {
   try {
 const entries = await Entry.create({
+  authorId: req.body.authorId,
   title: req.body.title,
   content: req.body.content,
   location: req.body.location,
@@ -77,14 +79,14 @@ router.delete("/:id", async (req, res) => {
 
 
 // GET /entry/search
-router.get("/search", async (req, res, next) => {
-  try {
-    const entries = await Entry.findByTag(req.query.search);
-    res.send(entries);
-  } catch (error) {
-    next(error);
-  }
-});
+// router.get("/search", async (req, res, next) => {
+//   try {
+//     const entries = await Entry.findByTag(req.query.search);
+//     res.send(entries);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 
 

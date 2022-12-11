@@ -4,48 +4,48 @@ require("dotenv").config(".env");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { salt} = require("../seed");
-const { auth } = require('express-openid-connect');
+const {User, Entry} = require("../models/index")
+// const { auth } = require('express-openid-connect');
 
 
 // This is a JS object that connect our app to auth service.
 // Object Destructuring 
 const {
     ACCESS_TOKEN_SECRET,
-    AUTH0_SECRET,
-    AUTH0_BASE_URL,
-    AUTH0_CLIENT_ID,
-    AUTH0_ISSUER_BASE_URL
+    // AUTH0_SECRET,
+    // AUTH0_BASE_URL,
+    // AUTH0_CLIENT_ID,
+    // AUTH0_ISSUER_BASE_URL
    
 } = process.env;
 
-const config = {
-    authRequired: false,
-    auth0Logout: true,
-    secret: AUTH0_SECRET,
-    baseURL: AUTH0_BASE_URL,
-    clientID: AUTH0_CLIENT_ID,
-    issuerBaseURL: AUTH0_ISSUER_BASE_URL
-  };
+// const config = {
+//     authRequired: false,
+//     auth0Logout: true,
+//     secret: AUTH0_SECRET,
+//     baseURL: AUTH0_BASE_URL,
+//     clientID: AUTH0_CLIENT_ID,
+//     issuerBaseURL: AUTH0_ISSUER_BASE_URL
+//   };
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 // 1. localhost:3000/api/users/login
 // 2. localhost:3000/api/users/logout
 // 3. localhost:3000/api/users/callback
-router.use(auth(config));
+// router.use(auth(config));
 
-// req.isAuthenticated is provided from the auth router
-router.get('/', (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-});
+// // req.isAuthenticated is provided from the auth router
+// router.get('/', (req, res) => {
+//   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+// });
 
-// // Restrictive or Private Route
-router.get("/users/entry", (req, res) => {
-    let isAuthenticated = req.oidc.isAuthenticated();
-    res.send(isAuthenticated ? "<h1>Welcome to our travel journal, please create your blog entry</h1>" : "<h1>Please make sure to authenticate in order to view our products</h1>")
-});
+// // // Restrictive or Private Route
+// router.get("/users/entry", (req, res) => {
+//     let isAuthenticated = req.oidc.isAuthenticated();
+//     res.send(isAuthenticated ? "<h1>Welcome to our travel journal, please create your blog entry</h1>" : "<h1>Please make sure to authenticate in order to view our products</h1>")
+// });
   
-// This is for the Databases
-const {User, Entry} = require("../models/index")
+
 
 
 //Include the Middleware
@@ -81,8 +81,8 @@ let authUser = async (req, res, next) => {
 //GET all users
 router.get("/", async (req, res, next) => {
   try {
-    let users = await User.findAll();
-    res.send(users);
+    let entries = await User.findAll();
+    res.send(entries);
 } catch (error) {
     next(error);
   }
@@ -94,26 +94,73 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   
   try{
-    const user = await User.findByPk(req.params.id, {
+    const entries = await User.findByPk(req.params.id, {
         include: [{model: Entry}]
     });
-    if(!user) {
+    if(!entries) {
         res.status(404);
         next();
       } else {
-        res.send(user);
+        res.send(entries);
       }
     } catch (error) {
       next(error);
     }
   });
 
+  // this endpoint GET all entries posted by a user (user id in req.params) 
+//https://sequelize.org/docs/v6/advanced-association-concepts/eager-loading/
+router.get("/:id/entries", async (req, res, next) => {
+
+  const postedEntries = await User.findByPk(req.params.id, {
+      include: {
+      model: Entry,
+      required: true
+}})
+
+
+  res.send(postedEntries);
+  
+  })
+
+ 
+  
+  router.put("/:id/entries/:entriesId", async (req, res, next) => {
+
+try {const users = await User.findByPk(req.params.id);
+     const entries = await Entry.findByPk(req.params.entriesId);
+
+  users.addEntry(entries);
+  const userEntries = await users.getEntries();
+  res.send(userEntries);
+
+} catch (error) {
+  next(error);
+}
+});
+
+  
+router.post("/:id/entries", async (req, res, next) => {
+
+  try {const users = await User.findByPk(req.params.id);
+       const entries = await Entry.findByPk(req.params.entriesId);
+  
+    users.addEntry(entries);
+    const userEntries = await users.getEntries();
+    res.send(userEntries);
+  
+  } catch (error) {
+    next(error);
+  }
+  });
+  
+
 router.post("/register", async (req, res, next) => {
 // The user should be authenticated
 
 // First thing we want to do is get the data passed into the body
     try {
-      const {username, name, password, email} = req.body;
+      const {username, name, password, email, admin} = req.body;
 console.log(req.body);
 
 
@@ -123,7 +170,7 @@ console.log(req.body);
     console.log("hashedPW: ", hashedPW);
 
 // Now we can create the user with these references: 
-    let createdUser = await User.create({username, name, password: hashedPW, email});
+    let createdUser = await User.create({username, name, password: hashedPW, email, admin});
 
    
 
@@ -188,8 +235,9 @@ router.put("/:id", async (req, res, next) => {
       await User.destroy({
         where : {id : req.params.id}
       });
-      const user = await User.findAll()
-      res.send(user);
+      const entries = await User.findByPk(req.params.id);
+      const deleteUsers = await entries.destroy();
+      res.send(deleteUsers);
     } catch (error) {
       next(error);
     } 

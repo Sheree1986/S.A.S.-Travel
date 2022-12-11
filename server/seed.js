@@ -1,6 +1,7 @@
 
 
 const {users, entries}  = require('./seedData.js');
+const fs = require('fs').promises //helps us get access to promises when dealing with seeding data into our database
 const {sequelize} = require('./db');
 const { User, Entry } = require('./models');
 const bcrypt = require("bcrypt");
@@ -23,28 +24,13 @@ let seed = async () => {
         
         // // insert data
              // insert data
-             await Promise.all(users.map(user => User.create(user)));
+             const createdUsers = await Promise.all(users.map(user => User.create(user)));
              const createdEntries = await Promise.all(entries.map(entry => Entry.create(entry)));
-             console.log(createdEntries)
-        // let entryEntries = await Entry.bulkCreate(entries);
-        // let userEntries = await User.bulkCreate(users);
+             
 
-        // let firstEntry = await entryEntries[0];
-        // let secondUser = await userEntries[0];
-
-
-        // console.log("Test 2: ", firstEntry);
-        // console.log("Test 2: ", secondUser);
-        // await Promise.all(users.map(user => User.create(user)));
-        // const createdEntries = await Promise.all(
-        // const createdTags = await Promise.all(tags.map(tag => Tag.create(tag)));
-        
-        //       // associate data
-        // createdEntries[0].addTags([createdTags[1]]);
-        // createdEntries[1].addTags([createdTags[0]]);
-        // createdEntries[2].addTags([createdTags[1], createdTags[2]]);
-      
-      
+             await Promise.all(createdUsers);
+             await Promise.all(createdEntries)
+     
 
 
         console.log("db populated!");
@@ -52,7 +38,7 @@ let seed = async () => {
         console.error(error);
  }
 }
-// seed();
+seed();
 
 module.exports = {
     seed,

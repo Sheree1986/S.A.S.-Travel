@@ -20,7 +20,7 @@ const Entry = sequelize.define("entry", {
 
         type: Sequelize.STRING,
         allowNull: false
-      },  
+      }
 
     }, {
       timestamps: false
@@ -45,28 +45,33 @@ const Entry = sequelize.define("entry", {
   const User = sequelize.define("user", {
     username: {
       type: Sequelize.STRING,
+      defaultValue: "John123",
       allowNull: false
  
     },
     name: {
       type: Sequelize.STRING,
+      defaultValue: "John Snow",
       allowNull: false
  
     },
     password: {
       type: Sequelize.STRING,
+      defaultValue: "Abc123",
       allowNull: false
  
     },
     email: {
       type: Sequelize.STRING,
+      defaultValue: "Johnsnow123@gmail.com",
       isEmail: true,
       allowNull: false
     },  
-    // admin: {
-    //   type: Sequelize.BOOLEAN,
-    //   allowNull: false
-    // },
+    admin: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    },
   
   }, {
       timestamps: false

@@ -1,10 +1,12 @@
 import Navbar from "../components/Navbar";
+import ContainerAdmin from "../components/ContainerAdmin";
 
 function OurPick() {
   return (
     <>
       <Navbar />
-      <h1>Our recomandations</h1>
+
+      <ContainerAdmin />
     </>
   );
 }

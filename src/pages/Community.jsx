@@ -1,10 +1,11 @@
 import Navbar from "../components/Navbar";
+import ContainerCommunity from "../components/ContainerCommunity";
 
 function Community() {
   return (
     <>
       <Navbar />
-      <h1>Community pick</h1>
+      <ContainerCommunity />
     </>
   );
 }

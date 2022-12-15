@@ -45,7 +45,7 @@ users: [
       username: "Superstar",
       name: "Sharee Poquette",
       password: "CyberSec",
-      email: "Sharee.Poquette@verizon.com",
+      email: "Sharee.Poquette@horizon.com",
       admin: true
     },
     {

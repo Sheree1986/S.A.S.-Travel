@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 // import {Link} from "react-router-dom"
 
 function CTA() {
-  //   let navigate = useNavigate();
+  let navigate = useNavigate();
   return (
     <>
       <div className="group-btn">

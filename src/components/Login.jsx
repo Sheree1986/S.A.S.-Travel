@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -34,6 +35,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  let navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -106,7 +108,13 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link
+                  href="#"
+                  variant="body2"
+                  onClick={() => {
+                    navigate("/register");
+                  }}
+                >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

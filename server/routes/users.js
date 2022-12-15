@@ -55,6 +55,8 @@ router.use(express.urlencoded({extended:true}));
 
 
 let authUser = async (req, res, next) => {
+
+  // TODO can put the boolean isAdmin in this 
     try{
 //The first thing we will do is we will get the "auth"
         const auth = req.header("Authorization");
@@ -64,7 +66,8 @@ let authUser = async (req, res, next) => {
         }else{
             console.log("Welcome: you are now logged in");
             const [, token] = auth.split(" ");
-// array deconstruction
+// array deconstruction 
+// to finish up tier 4
             console.log("Token: ", token)
             const user = jwt.verify(token, ACCESS_TOKEN_SECRET);
             req.user = user;

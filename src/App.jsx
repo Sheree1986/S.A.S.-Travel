@@ -1,16 +1,14 @@
-
-import './App.css'
-import Navbar from "./components/Navbar"
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Container from "./components/Container";
 
 function App() {
-  
-
   return (
     <>
-    <Navbar/>
-    
+      <Navbar />
+      <Container />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

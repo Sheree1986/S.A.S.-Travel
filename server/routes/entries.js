@@ -28,6 +28,8 @@ router.get("/:id", async (req, res) => {
 }
 });
 
+
+// update a single entry
 router.put("/:id", async (req, res) => {
   try {
     const entries = await Entry.findByPk(req.params.id);
@@ -63,7 +65,7 @@ next(error);
 });
 
 //Delete one entry
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", async (req, res, next) => {
   try {
      const entries = await Entry.findByPk(req.params.id);
      const deleteEntry =await entries.destroy();

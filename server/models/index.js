@@ -6,10 +6,14 @@ const Entry = sequelize.define("entry", {
   
     title: {
       type: Sequelize.STRING,
+      min: 3,
+      max: 50,
       allowNull: false
     },
     content: {
       type: Sequelize.TEXT,
+      min: 3,
+      max: 1024,
       // allowNull: false
     },
     location: {
@@ -45,29 +49,35 @@ const Entry = sequelize.define("entry", {
   const User = sequelize.define("user", {
     username: {
       type: Sequelize.STRING,
-      defaultValue: "John123",
+      unique: true,
+      min: 3,
+      max: 30,
       allowNull: false
  
     },
     name: {
       type: Sequelize.STRING,
-      defaultValue: "John Snow",
+      min: 3,
+      max: 30,
       allowNull: false
  
     },
     password: {
       type: Sequelize.STRING,
-      defaultValue: "Abc123",
+      min: 3,
+      max: 40,
       allowNull: false
  
     },
     email: {
       type: Sequelize.STRING,
-      defaultValue: "Johnsnow123@gmail.com",
+      unique: true,
+      min: 3,
+      max: 30,
       isEmail: true,
       allowNull: false
     },  
-    admin: {
+    isAdmin: {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
       allowNull: false

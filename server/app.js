@@ -5,8 +5,10 @@ const app = express();
 const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
-// const entriesRouter = require('./routes/entries')
-// const usersRouter = require('./routes/users')
+const register = require("./routes/register");
+const login = require("./routes/login");
+const entries = require("./routes/entries");
+const users = require("./routes/users");
 // const { auth } = require('express-openid-connect');
 
 
@@ -26,7 +28,20 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../dist')));
 
 // api router
-app.use('/api', require('./routes'));
+// app.use('/api', require('./routes'));
+app.use('/api/login', login);
+app.use('/api/register', register);
+app.use('/api/entries', entries);
+app.use('/api/users', users);
+
+
+app.get("/", (req, res) => {
+  res.send("Welcome our travel Journal..");
+});
+
+app.get("/entries", (req, res) => {
+  res.send(entries);
+});
 
 // 404 handler
 app.use((req, res) => {

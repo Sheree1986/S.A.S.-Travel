@@ -2,7 +2,7 @@ const { db } = require("./server/models");
 const app = require("./server/app");
 
 
-
+// const URI = process.env.URL;
 const PORT = process.env.PORT || 3000;
 
 const init = async () => {

@@ -39,6 +39,7 @@ router.put("/:id", async (req, res) => {
     content: req.body.content,
     location: req.body.location,
     image: req.body.image
+   
   })
 
   res.send(entries);

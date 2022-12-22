@@ -14,7 +14,7 @@ const Entry = sequelize.define("entry", {
       type: Sequelize.TEXT,
       min: 3,
       max: 1024,
-      // allowNull: false
+      allowNull: false
     },
     location: {
        type: Sequelize.TEXT,

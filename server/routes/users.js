@@ -2,15 +2,75 @@ const express = require("express");
 const router = express.Router();
 require("dotenv").config(".env");
 const {User, Entry} = require("../models/index")
-const { auth, isUser, isAdmin } = require("../middleware/auth");
+const {userReg, userLogin, userAuth, serializeUser, checkRole } = require("../utils/Auth");
+
+
+//user registration route 
+router.post("/register-user", async (req, res) => {
+  
+  await userReg(req.body, "user", res);
+
+
+});
+
+// Admin Registration route
+
+router.post("/register-admin", async (req, res, next) => {
+  try {
+    await userReg(req.body, "admin", res);
+  
+      } catch  (error) {
+        console.log(error);
+        next(error);
+      }
+  
+  });
+
+  // user login route
+
+router.post("/login-user", async (req, res, next) => {
+  try {
+    await userLogin(req.body, "user", res);
+  
+      } catch  (error) {
+        console.log(error);
+        next(error);
+      }
+  
+  });
+    // admin login route
+
+router.post("/login-admin", async (req, res, next) => {
+  try {
+    await userLogin(req.body, "admin", res);
+  
+      } catch  (error) {
+        console.log(error);
+        next(error);
+      }
+  
+  });
+  // userAuth, checkRole(["users"]),
+
+router.get("/profile",  async (req, res, next) => {
+  console.log(serializeUser(req.user))
+return res.status(201).send(serializeUser( req.user));
+
+})
+//user protected route
+router.get("/user-protected",userAuth, checkRole(["admin"]), async (req, res, next) => {})
+// admin protected route 
+router.get("/admin-protected",userAuth, checkRole(["admin"]), async (req, res, next) => {})
+
 
 
 //GET all users
-router.get("/",isAdmin,auth,  async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     let entries = await User.findAll();
-    res.send(entries);
+    res.status(200).send(entries);
 } catch (error) {
+  res.status(403).send("Access denied. Not authorized User..")
     next(error);
   }
 });
@@ -24,10 +84,10 @@ router.get("/:id", async (req, res, next) => {
         include: [{model: Entry}]
     });
     if(!entries) {
-        res.status(404);
+        res.status(404).send("Entries not found..");
         next();
       } else {
-        res.send(entries);
+        res.status(200).send(entries);
       }
     } );
 
@@ -35,19 +95,23 @@ router.get("/:id", async (req, res, next) => {
 //https://sequelize.org/docs/v6/advanced-association-concepts/eager-loading/
 router.get("/:id/entries", async (req, res, next) => {
 
-  const postedEntries = await User.findByPk(req.params.id, {
+  try { const postedEntries = await User.findByPk(req.params.id, {
       include: {
       model: Entry,
       required: true
 }})
 
 
-  res.send(postedEntries);
+  res.status(200).send(postedEntries);
   
-  })
+} catch (error) {
+  res.status(404).send("Entries are not found for this user..")
+    next(error);
+  }
+});
 
- 
-  
+
+// update user post by id
   router.put("/:id/entries/:entriesId", async (req, res, next) => {
 
 try {const users = await User.findByPk(req.params.id);
@@ -55,14 +119,15 @@ try {const users = await User.findByPk(req.params.id);
 
   users.addEntry(entries);
   const userEntries = await users.getEntries();
-  res.send(userEntries);
+  res.status(200).send(userEntries);
 
 } catch (error) {
+  res.status(403).send("User does not have permission to update...")
   next(error);
 }
 });
 
-  
+  // create post by a user via id
 router.post("/:id/entries", async (req, res, next) => {
 
   try {const users = await User.findByPk(req.params.id);
@@ -70,9 +135,10 @@ router.post("/:id/entries", async (req, res, next) => {
   
     users.addEntry(entries);
     const userEntries = await users.getEntries();
-    res.send(userEntries);
+    res.status(200).send(userEntries);
   
   } catch (error) {
+    res.status(403).send("User need to login to post..")
     next(error);
   }
   });
@@ -85,8 +151,10 @@ router.put("/:id", async (req, res, next) => {
         where: { id: req.params.id },
       });
       let putUsers = await User.findAll();
-      res.json(putUsers);
+      res.status(200).send({message: "User successfully updated", putUsers});
+     
     } catch (error) {
+      res.status(404).send("User not found")
       next(error);
     }
   });

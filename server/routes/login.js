@@ -2,8 +2,11 @@ const bcrypt = require("bcrypt");
 const { User } = require("../models/index");
 const express = require("express");
 const generateAuthToken = require("../auth/generateAuthToken");
+// const { auth,isUser, isAdmin } = require("../middleware/auth");
 const router = express.Router();
 
+
+// user login
 router.post("/", async (req, res) => {
  
 
@@ -25,6 +28,16 @@ router.post("/", async (req, res) => {
 } 
 }
 );
+
+
+// admin login route
+router.post("/register-admin", async (req, res, next) => {})
+//user profiled
+router.get("/profile", async (req, res, next) => {})
+//user protected route
+router.post("/user-protected", async (req, res, next) => {})
+// admin protected route 
+router.post("/admin-protected", async (req, res, next) => {})
 
 
 

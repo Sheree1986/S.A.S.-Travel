@@ -19,7 +19,7 @@ let seed = async () => {
         
         for (let i = 0; i < users.length; i ++) {
             users[i].password = bcrypt.hashSync(users[i].password, salt)
-            console.log(users[i].password);
+            // console.log(users[i].password);
         }
         
         // // insert data

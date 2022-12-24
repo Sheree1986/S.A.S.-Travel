@@ -77,11 +77,12 @@ const Entry = sequelize.define("entry", {
       isEmail: true,
       allowNull: false
     },  
-    isAdmin: {
-      type: Sequelize.BOOLEAN,
-      defaultValue: false,
-      allowNull: false
-    },
+    role: {
+      type: Sequelize.ENUM,
+      values: ["user", "admin"],
+      allowNull: false,
+      defaultValue: "user",
+    },  
   
   }, {
       timestamps: false

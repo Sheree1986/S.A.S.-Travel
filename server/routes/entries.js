@@ -12,8 +12,9 @@ router.use(express.urlencoded({extended: true}))
 router.get("/", async (req, res, next) => {
   try {
     const entries = await Entry.findAll();
-    res.send(entries);
+    res.status(200).send({message: "Entries successfully fetched.", entries});
   } catch (error) {
+    res.status(404).send({message: "Entries not found"});
     next(error);
   }
 });
@@ -22,8 +23,10 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res) => {
   try {
      const entries = await Entry.findByPk(req.params.id);
- res.send(entries);
+     res.status(200).send({message: "Entry successfully fetched", entries});
 } catch (error) {
+  res.status(404).send({message: "Entry not found"});
+
   next(error);
 }
 });
@@ -41,9 +44,11 @@ router.put("/:id", async (req, res) => {
     image: req.body.image
    
   })
+  res.status(200).send({message: "Entry successfully updated", entries});
 
-  res.send(entries);
 } catch (error) {
+  res.status(404).send({message: "Entry not updated successfully"});
+
   next(error);
 }
 });
@@ -58,9 +63,9 @@ const entries = await Entry.create({
   location: req.body.location,
   image: req.body.image
 })
-
-res.send(entries);
+res.status(200).send({message: "Entry successfully created", entries});
 } catch (error) {
+  res.status(404).send({message: "Entry not created successfully"})
 next(error);
 }
 });
@@ -70,8 +75,9 @@ router.delete("/:id", async (req, res, next) => {
   try {
      const entries = await Entry.findByPk(req.params.id);
      const deleteEntry =await entries.destroy();
- res.send(deleteEntry);
+     res.status(200).send({message: "Entry successfully deleted", deleteEntry});;
 } catch (error) {
+  res.status(404).send({message: "Entry not deleted successfully"})
   next(error);
 }
 });

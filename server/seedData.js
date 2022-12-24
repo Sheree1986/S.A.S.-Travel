@@ -9,11 +9,25 @@ entries: [
       
     },
     {
+      authorId: 1,
+      title: "Hoping Down Under Pirate's bay",
+      image: "https://cdn.travelsafe-abroad.com/wp-content/uploads/thumb-1920-716104.jpg",
+      location: "Mango100",
+      content: "Looking at the ....",
+    },
+    {
+      authorId: 2,
+      title: "Hoping Down Under testing more post",
+      image: "https://cdn.travelsafe-abroad.com/wp-content/uploads/thumb-1920-716104.jpg",
+      location: "Australia inland",
+      content: "Looking at the ....",
+    },
+    {
       authorId: 2,
       title: "Hoping Down Under",
       image: "https://cdn.travelsafe-abroad.com/wp-content/uploads/thumb-1920-716104.jpg",
       location: "Australia",
-     x: "Looking at the ....",
+      content: "Looking at the ....",
     },
     {
       authorId: 3,
@@ -21,6 +35,13 @@ entries: [
       image: "https://www.celebritycruises.com/blog/content/uploads/2021/09/what-is-brazil-known-for-christ-the-redeemer-aerial-hero.jpg",
       location: "Brazil",
       content: "Blah blah blah blah",
+    },
+    {
+      authorId: 3,
+      title: "Hoping Down Under",
+      image: "https://cdn.travelsafe-abroad.com/wp-content/uploads/thumb-1920-716104.jpg",
+      location: "Banana",
+      content: "Looking at the ....",
     },
 ],
 users: [
@@ -30,7 +51,7 @@ users: [
       name: "Sheree Edmund",
       password: "ihatevpn",
       email: "sheree.edmund@horizon.com",
-      admin: true
+      role: "admin"
     },
     {
       
@@ -38,7 +59,7 @@ users: [
       name: "Adrian Baltag",
       password: "notcomingintotheoffice",
       email: "adrian.baltag@horizon.com",
-      admin: true
+      role: "admin"
     },
     {
      
@@ -46,21 +67,21 @@ users: [
       name: "Sharee Poquette",
       password: "CyberSec",
       email: "Sharee.Poquette@horizon.com",
-      admin: true
+      role: "admin"
     },
     {
     username: "ElvisisLuffy",
     name: "Elvis Luffy",
     password: "totallynotthundercats",
     email: "elvis@gmail.com",
-    admin: false
+    role: "user"
   },
   {
     username: "Laurie",
     name: "Laurie Multiverse",
     password: "thundercats",
     email: "laurie@gmail.com",
-    admin: false
+    role: "user"
   },
 ],
 

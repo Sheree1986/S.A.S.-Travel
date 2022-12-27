@@ -1,22 +1,22 @@
 const jwt = require("jsonwebtoken");
 
-const generateAuthToken = (users, res) => {
+const generateAuthToken = (user, res) => {
   const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
   const token = jwt.sign(
     {
-      id: users.id,
-      role: users.role,
-      name: users.name,
-      email: users.email,
+      id: user.id,
+      role: user.role,
+      name: user.username,
+      email: user.email,
   
     },
     ACCESS_TOKEN_SECRET, 
   );
 
- let results = {
-  username: users.name,
-  role: users.role,
+ const results = {
+  username: user.username,
+  role: user.role,
   token: `Bearer ${token}`,
  };
  return results

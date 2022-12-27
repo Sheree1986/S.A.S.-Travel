@@ -9,32 +9,30 @@ const cors = require('cors');
 const bp = require("body-parser");
 // const { auth } = require('express-openid-connect');
 const { db } = require("./models");
+app.use(express.json());
 var { expressjwt: jwt } = require('express-jwt');
 var jwks = require('jwks-rsa');
 const jwtAuthz = require("express-jwt-authz");
 const passport = require('passport');
-const { entries } = require('./seedData');
-// const entries = require("./routes/entries");
 
 
 
-
-// middleware obtained from Auth0 API
-var jwtCheck = jwt({
-  secret: jwks.expressJwtSecret({
-      cache: true,
-      rateLimit: true,
-      jwksRequestsPerMinute: 5,
-      jwksUri: 'https://dev-1wgxpps6aa71rifj.us.auth0.com/.well-known/jwks.json'
-}),
-audience: 'https://localhost/3000',
-issuer: 'https://dev-1wgxpps6aa71rifj.us.auth0.com/',
-algorithms: ['RS256']
-});
-const checkPermission = jwtAuthz(["read:messages"], {
-  customScopeKey: "permissions",
-  checkAllScopes: true,
-});
+// // middleware obtained from Auth0 API
+// var jwtCheck = jwt({
+//   secret: jwks.expressJwtSecret({
+//       cache: true,
+//       rateLimit: true,
+//       jwksRequestsPerMinute: 5,
+//       jwksUri: 'https://dev-1wgxpps6aa71rifj.us.auth0.com/.well-known/jwks.json'
+// }),
+// audience: 'https://localhost/3000',
+// issuer: 'https://dev-1wgxpps6aa71rifj.us.auth0.com/',
+// algorithms: ['RS256']
+// });
+// const checkPermission = jwtAuthz(["read:messages"], {
+//   customScopeKey: "permissions",
+//   checkAllScopes: true,
+// });
 
 
 // const {
@@ -62,8 +60,10 @@ app.use(bp.json())
 app.use(morgan('dev'));
 // parsing middleware for form input data & json
 app.use(express.urlencoded({ extended: false }));
+// app.use(bp.urlencoded({extended: false}));
 app.use(express.json());
 // app.use(auth(config));
+
 
 
 
@@ -78,13 +78,14 @@ app.use('/api/users', require("./routes/users"));
 
 
 app.use('/api/entries', require("./routes/entries"));
+
 app.get("/home", (req, res) => {
   res.send("Welcome our travel Journal..");
 });
 
-app.get("/api/entries", (req, res) => {
-  res.send(entries);
-});
+// app.get("/api/entries", (req, res) => {
+//   res.send(entries);
+// });
 
 // 404 handler
 app.use((req, res) => {

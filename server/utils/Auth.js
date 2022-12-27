@@ -1,4 +1,4 @@
-const { salt} = require("../seed");
+const { salt } = require("../seed");
 const bcrypt = require("bcrypt");
 const generateAuthToken = require("../auth/generateAuthToken");
 const { User } = require("../models/index");
@@ -32,9 +32,9 @@ const userReg = async (userDets, role, res) => {
     let createdUser = await new User({...userDets, password: hashedPW, role});
     await createdUser.save();
     
-    const token = generateAuthToken(createdUser);
+    const results = generateAuthToken(createdUser);
 
-  res.status(201).send({message: "User Successfully Registered", token});
+  res.status(201).send({message: "User Successfully Registered", results});
 
 
     } catch (error) {
@@ -45,25 +45,25 @@ const userReg = async (userDets, role, res) => {
 const userLogin = async (userInfo, role, res) => {
     //object deconstruction 
     let {username, password} = userInfo;
-    const user = await User.findOne( {where: {username: username}});
+    const user = await User.findOne({where: {username }});
     if(!user) {
-        return res.status(400).send({Message: "Username is not found. Invalid login username or password"});
+        return res.status(400).send({Message: " Username is not found. Invalid login username or password"});
     }
     if(user.role != role) {
-        return res.status(400).send({Message: "incorrect role. Login in from the correct user portal"});
+        return res.status(400).send({Message: " incorrect role. Login in from the correct user portal"});
     }
     // check that the password match
     let isMatch = await bcrypt.compare(password, user.password);
     if(isMatch){
-        const token = generateAuthToken(isMatch);
-        res.status(200).send({message: "Successful Login", token});
+        const results = generateAuthToken(isMatch);
+        res.status(200).send({message: " Successful Login", results});
     } else {
         return res.status(400).send({Message: "incorrect password"});   
     }
 
 }
     const validateUsername = async username => {
-        let user = await User.findOne( {where: { username: username}})
+        let user = await User.findOne({where: { username} }) ;
         return user ? false : true;
 
     };
@@ -72,30 +72,42 @@ const userLogin = async (userInfo, role, res) => {
 
     const checkRole = roles => (req, res, next) =>
     !roles.includes(req.user.role)
-      ? res.status(401).json("Unauthorized")
+      ? res.status(401).send("Unauthorized")
       : next();
   
     const validateEmail = async email => {
-        let user = await User.findOne({where: { email: email}})
+        let user = await User.findOne({email})
         return user ? false : true;
        
     };
    
-    const serializeUser = user => {
-        return {
-          username: user.username,
-          email: user.email,
-          name: user.name,
-          id: user.id,
-       
-        };
-      };
+    // const serializeUser = async username =>  {
+    //   {
+    //         let user = await User.findOne({Where: { username}}) ;
+
+    //     return {
+    //         username: user.username,
+    //         id: user.id,
+    //         name: user.name,
+    //         email: user.email
+        
+    //     }
+    //     };
+    //   };
+    // const serializeUser = user => {
+    //     return {
+    //       username: user.username,
+    //       email: user,
+    //       name: user,
+    //       id: user
+    //     };
+    //   };
 
     module.exports = {
         userAuth,
         userReg,
         userLogin,
-        serializeUser,
+        // serializeUser,
         checkRole
     }
   

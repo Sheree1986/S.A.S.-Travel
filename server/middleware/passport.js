@@ -10,14 +10,14 @@ const options = {
 module.exports = passport => {
   passport.use(
     new Strategy(options, async (payload, done) => {
-      await User.findById(payload.user_id)
+      await User.findById(payload.user.id)
         .then(user => {
           if (user) {
             return done(null, user);
           }
           return done(null, false);
         })
-        .catch(err => {
+        .catch(error => {
           return done(null, false);
         });
     })

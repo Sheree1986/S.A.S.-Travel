@@ -15,7 +15,7 @@ router.post("/register-user", async (req, res) => {
 
 // Admin Registration route
 
-router.post("/register-admin", async (req, res, next) => {
+router.post("/register-admin",  async (req, res, next) => {
   try {
     await userReg(req.body, "admin", res);
   
@@ -28,7 +28,7 @@ router.post("/register-admin", async (req, res, next) => {
 
   // user login route
 
-router.post("/login-user", async (req, res, next) => {
+router.post("/login-user",  async (req, res, next) => {
   try {
     await userLogin(req.body, "user", res);
   
@@ -52,10 +52,18 @@ router.post("/login-admin", async (req, res, next) => {
   });
   // userAuth, checkRole(["users"]),
 
-router.get("/profile",  async (req, res, next) => {
-  console.log(serializeUser(req.user))
-return res.status(201).send(serializeUser( req.user));
+router.get("/profile", userAuth,  async (req, res, next) => {
+ try { console.log(req)
+  // console.log(req.body)
 
+console.log(req.user);
+return res.status(201).send(req.user);
+} catch  (error) {
+  console.log(error);
+  next(error);
+
+
+}
 })
 //user protected route
 router.get("/user-protected",userAuth, checkRole(["admin"]), async (req, res, next) => {})
@@ -165,9 +173,6 @@ router.put("/:id", async (req, res, next) => {
 // Delete a single user by id
   router.delete("/:id", async (req, res, next) => {
     try {
-      // const entries = await User.destroy({
-      //   where : {id : req.params.id}
-      // });
       const entries = await User.findByPk(req.params.id);
       const deleteUsers = await entries.destroy();
       res.status(200).send({message: "User successfully deleted", deleteUsers});

@@ -11,8 +11,8 @@ const bp = require("body-parser");
 const { db } = require("./models");
 app.use(express.json());
 var { expressjwt: jwt } = require('express-jwt');
-var jwks = require('jwks-rsa');
-const jwtAuthz = require("express-jwt-authz");
+// var jwks = require('jwks-rsa');
+// const jwtAuthz = require("express-jwt-authz");
 const passport = require('passport');
 
 

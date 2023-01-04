@@ -1,8 +1,11 @@
+const passport = require("passport")
 const { salt } = require("../seed");
 const bcrypt = require("bcrypt");
-const generateAuthToken = require("../auth/generateAuthToken");
+// const generateAuthToken = require("../auth/generateAuthToken");
 const { User } = require("../models/index");
-const passport = require("passport")
+const jwt = require("jsonwebtoken");
+const SECRET = process.env.ACCESS_TOKEN_SECRET;
+
 
 
 // function to register user (both admin and user)
@@ -32,9 +35,9 @@ const userReg = async (userDets, role, res) => {
     let createdUser = await new User({...userDets, password: hashedPW, role});
     await createdUser.save();
     
-    const results = generateAuthToken(createdUser);
+    // const results = generateAuthToken(createdUser);
 
-  res.status(201).send({message: "User Successfully Registered", results});
+  res.status(201).send({message: "User Successfully Registered"});
 
 
     } catch (error) {
@@ -55,8 +58,28 @@ const userLogin = async (userInfo, role, res) => {
     // check that the password match
     let isMatch = await bcrypt.compare(password, user.password);
     if(isMatch){
-        const results = generateAuthToken(isMatch);
-        res.status(200).send({message: " Successful Login", results});
+        const token = jwt.sign(
+            {
+              id: user.id,
+              role: user.role,
+              name: user.username,
+              email: user.email,
+          
+            },
+            SECRET, 
+            {expiresIn: "7 days" }
+          );
+        
+         const result = {
+   
+          username: user.username,
+          role: user.role,
+          email: user.email,
+          token
+        //   : `Bearer ${token}`
+         };
+    
+        res.status(200).send({...result, message: " Successful Login"});
     } else {
         return res.status(400).send({Message: "incorrect password"});   
     }

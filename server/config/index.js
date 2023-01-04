@@ -3,5 +3,8 @@ require("dotenv").config();
 module.exports = {
 
 
-    SECRET: process.env.AUTH0_SECRET
+   
+
+
+SECRET: process.env.ACCESS_TOKEN_SECRET
 }

@@ -1,4 +1,4 @@
-import "./btn-profile.css";
+import Button from '@mui/material/Button';
 // import { Routes } from "./routes/Routes";
 // import { Route } from "react-router-dom";
 
@@ -10,24 +10,9 @@ function BtnProfile() {
   let navigate = useNavigate();
   return (
     <>
-      <div className="group-btn">
-        <div className="login-btn-wrapper">{/* </Link> */}</div>
-        <div className="register-btn-wrapper">
-          <button
-            className="add"
-            id="add-btn"
-            onClick={() => {
+       <Button variant="outlined"  onClick={() => {
               navigate("/add-post");
-            }}
-          >
-            <span className="btn--anim1"></span>
-            <span className="btn--anim1"></span>
-            <span className="btn--anim1"></span>
-            <span className="btn--anim1"></span>
-            ADD POST
-          </button>
-        </div>
-      </div>
+            }} color="success" size="large">Add post</Button>
     </>
   );
 }

@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 //mongodb connection
 const connectDB = async() =>{
     try{
+        mongoose.set("strictQuery", false);
         const conn = await mongoose.connect(process.env.MONGO_URI)
         //used colors for help differentiate in terminal(GUI)
         console.log(`MongoDB connected: ${conn.connection.host}`.cyan.underline);

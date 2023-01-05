@@ -23,11 +23,11 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <div className="App">
-      <AdminDashboard />
+      {/* <AdminDashboard /> */}
       {/* <Home/>  */}
       {/* <Navbar /> */}
 
-    {/* <Routes>
+    <Routes>
         <Route path="/recomandations" element={<Recomandations />} />
         <Route path="/community" element={<Community />} />
         <Route path="/profile" element={<Profile />} />
@@ -38,7 +38,7 @@ function App() {
         <Route path="/post" element={<SinglePost />} />
         <Route path="/add-post" element={<AddPost />} />
         <Route path="/*" element={<ErrorPage />} />
-      </Routes> */}
+      </Routes>
     </div>
   );
 }

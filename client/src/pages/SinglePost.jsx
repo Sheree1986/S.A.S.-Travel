@@ -88,19 +88,3 @@ function SinglePost() {
 }
 
 export default SinglePost;
-
-//view post image in recommendation page on the cube -- user
-
-
-
-//view detailed view of post -- user
-//view image of posts on commuinty page --user (done)
-//view all users -- admin (done)
-//delete users --admin ( done)
-//view posts -- admin (done)
-//view post Count -- admin (done)
-
-//create post for user (done)
-//delete the post --user (done)
-//update the post --user (partially done)
-//get all posts in commuinty page (done)

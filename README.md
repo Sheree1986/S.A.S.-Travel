@@ -1,14 +1,49 @@
 
+# S.A.S Travel Journal
+This is a travel journal, fullstack project, containing a user perspective
+ and also an admin perspective:
 
-``` 
-To access server, install the following
-npm install 
-npm install sequelize
-npm install sqlite3
-npm install express
-npm start -dev
-npm start client -server
+
+# Features
+
+<details>
+USER
+- able to login/register
+- able to use CRUD (CREATE post, UPDATE post, DELETE post, VIEW self posts)
+ADMIN
+-able to login/register
+-able to see total number of users/posts
+</details>
+
+
+# Environment Variables
+To run this project, you will need to add the following environment variables to your .env file
+`PORT`
+`MONGO_URI`
+
+# Installation
+git clone https://github.com/S-A-S-Back-For-More/S.A.S-Travel.git
+
+
+```bash backend
+from root cd server - install dependencies
+    npm install
+    add environment variables values in .env(provided by request)
+    npm start
 ```
+
+```bash frontend
+from root cd client - install dependencies
+    npm install
+    npm run dev
+```
+
+
+# Authors
+- [@adrianbaltag](https://github.com/adrianbaltag)
+- [@Sheree1986](https://github.com/Sheree1986)
+- [@nukandtudasmom](https://github.com/nukandtudasmom)
+
 
 # Tier 1 — MVP Application - CRUD and REST 🔓
 <details>
@@ -126,3 +161,9 @@ npm start client -server
   * As a User, I want my app to be visually stunning
  
 </details>
+
+
+
+
+
+

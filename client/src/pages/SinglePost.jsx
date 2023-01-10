@@ -20,7 +20,7 @@ function SinglePost() {
       .then((response) => {
         console.log(response.data);
         setPostObject(response.data);
-        let array = response.data.image?.img?.data?.data
+        let array = response.data?.image?.img?.data?.data
         setBinaryString(`data:image/jpeg;base64,${arrayBufferToBase64(array)}`)
 
       });
@@ -35,7 +35,9 @@ function SinglePost() {
   return (
     <>
       <Navbar />
-      <h1 style={{ margin: "0 auto" }}>My post</h1>
+
+      <h1 style={{ marginTop: '3em' }}>My post</h1>
+    
       <div
         className="wrapper"
         style={{
@@ -52,19 +54,19 @@ function SinglePost() {
         <div
           className="card"
           style={{
-            border: "1px solid red",
-            height: "20em",
+
+            height: "2em",
             width: "50%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "start",
             alignItems: "center",
-            gap: "3em",
+
             margin: "0 auto",
-            marginTop: "5em",
+
           }}
         >
-          <div className="container-img">
+          <div className="container-img" style={{ marginTop: '2em' }}>
             <div>
               <img
                 src={binaryString}
@@ -75,16 +77,32 @@ function SinglePost() {
           <h3 style={{ color: "black" }}>
             {postObject && postObject.location}
           </h3>
-          <h5 style={{ color: "black" }}>
+          <p style={{ color: "black", fontSize: '16px' }}>
             {postObject && postObject.description}
-          </h5>
+          </p>
 
         </div>
 
       </div>
-      <BtnPost />
+
     </>
   );
 }
 
 export default SinglePost;
+
+//view post image in recommendation page on the cube -- user
+
+
+
+//view detailed view of post -- user
+//view image of posts on commuinty page --user (done)
+//view all users -- admin (done)
+//delete users --admin ( done)
+//view posts -- admin (done)
+//view post Count -- admin (done)
+
+//create post for user (done)
+//delete the post --user (done)
+//update the post --user (partially done)
+//get all posts in commuinty page (done)

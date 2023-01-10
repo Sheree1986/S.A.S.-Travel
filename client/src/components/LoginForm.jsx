@@ -3,9 +3,9 @@ import "./loginform.css";
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { loginSchema } from "../assets/utils/validationSchema/index";
+import AuthService from "../services/auth.service";
 import VideoBackground from "./VideoBackground";
-
-
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   name: "",
@@ -15,9 +15,23 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+
+  const navigate = useNavigate();
+
   const onSubmit = (data, actions) => {
     console.log(data);
     actions.resetForm();
+
+    AuthService.login(data.email, data.password).then(
+      (response) => {
+        console.log(response);
+        if(response.success){
+          alert("Login Successful");
+          navigate("/profile");
+        }else{
+          alert(response.data.message);
+        }
+      });
   };
 
   return (

@@ -4,6 +4,7 @@
 // import '@fontsource/roboto/700.css';
 // import "./App.css"
 // import Typography from '@mui/material/Typography';
+import { useState, useEffect } from 'react';
 import Recomandations from "./pages/Recomandations";
 import Community from "./pages/Community";
 import Profile from "./pages/Profile";
@@ -19,27 +20,48 @@ import AddPost from "./pages/AddPost";
 import ViewAdminPost from "./pages/ViewAdminPost";
 import AdminDashboard from "./pages/AdminDashboard";
 import Navbar from "./components/Navbar";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    let userToken = JSON.parse(localStorage.getItem("token"));
+    if (userToken !== null) {
+      var user = userToken.split(" ")[1];
+      user = JSON.parse(atob(user.split(".")[1]));
+      console.log("Home: ", user);
+      setUser(user);
+    }
+  }, []);
+
   return (
     <div className="App">
-      {/* <AdminDashboard /> */}
+     
       {/* <Home/>  */}
       {/* <Navbar /> */}
 
-    <Routes>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Home />} />
+        <Route path ="/dashboard" element={ <AdminDashboard />}/>
+
+       {/* {Protected Routes}  */}
+
+   <Route element={<RequireAuth />} >
         <Route path="/recomandations" element={<Recomandations />} />
         <Route path="/community" element={<Community />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/admin" element={<ViewAdminPost/>} />
+        <Route path="/admin" element={<ViewAdminPost />} />
         <Route path="/post" element={<SinglePost />} />
         <Route path="/add-post" element={<AddPost />} />
         <Route path="/*" element={<ErrorPage />} />
-      </Routes>
-    </div>
+      </Route>
+
+    </Routes> 
+    </div > 
   );
 }
 

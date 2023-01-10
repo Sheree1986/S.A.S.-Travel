@@ -2,9 +2,10 @@ import "./registerForm.css";
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { signupSchema } from "../assets/utils/validationSchema/index";
+import axios from "axios";
+import AuthService from "../services/auth.service";
+import { useNavigate } from 'react-router-dom';
 // import VideoBackground from "./VideoBckground";
-
-
 
 const initialValues = {
   name: "",
@@ -14,9 +15,24 @@ const initialValues = {
 };
 
 const RegisterForm = () => {
+    const navigate = useNavigate();
   const onSubmit = (data, actions) => {
     console.log(data);
     actions.resetForm();
+
+    AuthService.signup(data.name, data.email, data.password).then(
+      (response) => {
+        console.log(response);
+        if(response.data.success){
+          alert("Registration Successful");
+          //navigator.push("/login");
+          navigate("/login");
+        }else{
+          alert(response.data.message);
+        }
+      }
+    );
+
   };
 
   return (

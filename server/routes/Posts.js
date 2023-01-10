@@ -1,4 +1,5 @@
 const express = require("express");
+var passport = require("passport");
 const router = express.Router();
 //import controller from controllers folder to be able to use the logic defined there
 const {

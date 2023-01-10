@@ -12,7 +12,10 @@ function BtnProfile() {
     <>
        <Button variant="outlined"  onClick={() => {
               navigate("/add-post");
-            }} color="success" size="large">Add post</Button>
+  }
+            }
+  color="success" size="large">Add post</Button>
+
     </>
   );
 }

@@ -20,9 +20,7 @@ export default function BasicGrid() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={7}>
         <Grid item xs={12}>
-          <Item style={{ background: "transparent", color: "white" }}>
-            <h1>Our recomandations</h1>
-          </Item>
+         
         </Grid>
 
         <Grid item xs={12}>

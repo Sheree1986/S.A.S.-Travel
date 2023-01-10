@@ -26,7 +26,7 @@ const deleteUser = asyncHandler(async (req, res) => {
   User.findByIdAndRemove(id)
     .exec()
     .then(()=> res.status(204).json({
-      messsage:'User successfully deleted',
+      message:'User successfully deleted',
       success: true,
     }))
     .catch((err) => res.status(500).json({

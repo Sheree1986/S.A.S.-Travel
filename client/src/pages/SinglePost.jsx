@@ -96,7 +96,7 @@ export default SinglePost;
 
 
 //view detailed view of post -- user
-//view image of posts on commuinty page --user (done)
+//view image of posts on community page --user (done)
 //view all users -- admin (done)
 //delete users --admin ( done)
 //view posts -- admin (done)
@@ -105,4 +105,4 @@ export default SinglePost;
 //create post for user (done)
 //delete the post --user (done)
 //update the post --user (partially done)
-//get all posts in commuinty page (done)
+//get all posts in community page (done)

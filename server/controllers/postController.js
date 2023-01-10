@@ -27,7 +27,7 @@ const createPost = asyncHandler(async (req, res) => {
   if (!req.body.location || !req.body.description) {
     //bad request err(if user add a post which is not a text)
     res.status(400);
-    //express err handler//will create err difficult to read->so.. create foolder(middleware) in server folder for custom error handling that exe during req / res cycle
+    //express err handler//will create err difficult to read->so.. create folder(middleware) in server folder for custom error handling that exe during req / res cycle
     throw new Error("Bad request! Please add a text field to your post");
   }
   const post = await Post.create({

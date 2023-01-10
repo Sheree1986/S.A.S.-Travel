@@ -15,7 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 
-const pages = ["Recomandations", "Profile", "Community"];
+const pages = ["Recommendations", "Profile", "Community"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

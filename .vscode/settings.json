@@ -1,11 +1,19 @@
 {
     "cSpell.words": [
+        "adminposts",
         "adrianbaltag",
+        "createuser",
         "Dets",
         "expressjwt",
+        "getusers",
         "jwks",
         "nukandtudasmom",
         "oidc",
-        "userid"
+        "passw",
+        "signin",
+        "signout",
+        "singleuserpost",
+        "userid",
+        "userposts"
     ]
 }

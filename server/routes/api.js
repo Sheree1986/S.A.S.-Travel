@@ -19,7 +19,7 @@ router.post('/signup', function(req, res) {
     // save the user
     newUser.save(function(err) {
       if (err) {
-        //return res.json({success: false, msg: 'Email already exists.'});
+        
         return res.json({success: false, msg: err});
       }
       res.json({success: true, msg: 'Successful created new user.'});

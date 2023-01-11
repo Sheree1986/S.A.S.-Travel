@@ -60,7 +60,10 @@ from root cd client - install dependencies
 
    ✈️ As a User, I want to log in to a deployed app.
 
-   ✈️  🏁 Deployed app https://s-a-s-travel.onrender.com 🏁
+   ✈️  🏁 Original Sequelize Database Backend Deployed app https://s-a-s-travel.onrender.com 🏁
+   ✈️  🏁 Newer Mongo Atlas Database Back Deployed app https://s-a-s-travel-frontend.onrender.com 🏁
+    ✈️  🏁 Newer Mongo Atlas Database Back Deployed app https://documenter.getpostman.com/view/17739658/2s8ZDR7RVC 🏁  
+
 
 </details>
 

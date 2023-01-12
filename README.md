@@ -61,9 +61,17 @@ from root cd client - install dependencies
    ✈️ As a User, I want to log in to a deployed app.
 
    ✈️  🏁 Original Sequelize Database Backend Deployed app https://s-a-s-travel.onrender.com 🏁
-   ✈️  🏁 Newer Mongo Atlas Database Back Deployed app https://s-a-s-travel-frontend.onrender.com 🏁
-    ✈️  🏁 Newer Mongo Atlas Database Back Deployed app https://documenter.getpostman.com/view/17739658/2s8ZDR7RVC 🏁  
 
+
+   ✈️  🏁 Newer Mongo Atlas Database Back Deployed app https://s-a-s-travel-frontend.onrender.com 🏁
+
+
+   ✈️  🏁 Postman API Documentation https://documenter.getpostman.com/view/17739658/2s8ZDR7RVC 🏁  
+
+   
+   ✈️  🏁 YouTube Presentation Video https://drive.google.com/file/d/1CGLivEK-sHNQTIXRuheKA7hG44hmLYXy/view?usp=sharing 🏁  
+
+  
 
 </details>
 

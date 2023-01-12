@@ -12,7 +12,7 @@ import SinglePost from "./pages/SinglePost";
 import AddPost from "./pages/AddPost";
 import ViewAdminPost from "./pages/ViewAdminPost";
 import AdminDashboard from "./pages/AdminDashboard";
-import RequireAuth from "./components/RequireAuth";
+// import RequireAuth from "./components/RequireAuth";
 
 function App() {
 
